@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>钱丹丹 Daniella — IMC & Brand Strategy</title>
+<meta name="description" content="Integrated Marketing Communications professional. 8 years. 13 markets. Consumer tech.">
+<style>
+  :root {
+    --bg: #f8f6f2;
+    --surface: #f0ede7;
+    --card: #ffffff;
+    --text: #2c2c2a;
+    --text-muted: #6b6760;
+    --text-faint: #b0aca5;
+    --accent: #8B7E74;
+    --accent-warm: #C4A882;
+    --accent-dark: #5C5348;
+    --border: #e5e0d8;
+  }
+
+  * { box-sizing: border-box; margin:0; padding:0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Inter", "SF Pro Display", -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height:1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 36px; }
+
+  section { padding: 80px 0; position: relative; }
+  section:first-of-type { padding-top: 100px; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index: 100;
+    background: rgba(248,246,242,0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+
+  .nav-inner {
+    max-width: 1000px; margin: 0 auto; padding: 14px 36px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .nav-logo { font-size: 14px; font-weight: 500; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 26px; list-style: none; }
+  .nav-links a {
+    font-size: 12px; color: var(--text-muted); text-decoration: none;
+    transition: color 0.2s; letter-spacing: 0.02em;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-right { display: flex; align-items: center; gap: 14px; }
+
+  .lang-toggle {
+    font-size: 11px; color: var(--text-faint); background: none; border:1px solid var(--border);
+    padding: 4px 10px; border-radius: 16px; cursor: pointer; transition: all 0.2s;
+    font-family: inherit;
+  }
+  .lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  .nav-resume {
+    font-size: 11px; color: var(--accent); text-decoration: none;
+    padding: 5px 12px; border: 1px solid var(--accent); border-radius: 20px;
+    transition: all 0.2s;
+  }
+  .nav-resume:hover { background: var(--accent); color: white; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding-top: 60px;
+  }
+
+  .hero-curves {
+    position: absolute; top:0; left:0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; overflow: hidden;
+  }
+
+  .hero-content {
+    position: relative; z-index:1; display: grid;
+    grid-template-columns: 1fr auto; gap: 60px; align-items: center;
+  }
+
+  .hero-text { max-width: 560px; }
+
+  .hero-kicker {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 18px; font-weight: 500;
+  }
+
+  .hero-text h1 {
+    font-size: 48px; font-weight: 400; line-height: 1.18;
+    letter-spacing: -0.02em; margin-bottom: 22px;
+  }
+
+  .hero-text h1 em {
+    font-style: normal; color: var(--accent);
+  }
+
+  .hero-text p {
+    font-size: 16px; color: var(--text-muted);
+    max-width: 460px; line-height: 1.75; margin-bottom: 32px;
+  }
+
+  .hero-line { width: 44px; height:1px; background: var(--accent-warm); margin-bottom: 24px; }
+
+  .hero-avatar {
+    width: 180px; height: 180px; border-radius: 50%;
+    object-fit: cover; flex-shrink: 0;
+    border: 1.5px solid var(--border);
+  }
+
+  /* ─── STATS ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: 48px;
+  }
+
+  .stat-card {
+    padding: 24px 20px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-card:last-child { border-right: none; }
+  .stat-number { font-size: 30px; font-weight: 400; color: var(--accent-dark); margin-bottom: 4px; letter-spacing: -0.02em; }
+  .stat-label { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ─── SECTION LABELS ─── */
+  .section-label {
+    font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 12px; font-weight: 500;
+  }
+
+  .section-title {
+    font-size: 28px; font-weight: 400; line-height: 1.3;
+    letter-spacing: -0.01em; margin-bottom: 16px;
+  }
+
+  .section-body {
+    font-size: 14px; color: var(--text-muted);
+    max-width: 560px; line-height: 1.8; margin-bottom: 36px;
+  }
+
+  /* ─── FILTER BAR ─── */
+  .filter-bar {
+    display: flex; gap: 10px; margin-bottom: 36px; flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    font-size: 12px; padding: 6px 16px; border-radius: 20px;
+    border:1px solid var(--border); background: transparent;
+    color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+    font-family: inherit; letter-spacing: 0.01em;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  /* ─── PROJECTS ─── */
+  .project-section { background: var(--surface); }
+
+  .project-grid {
+    display: grid; gap: 24px;
+  }
+
+  .project-card {
+    background: var(--card); border-radius: 14px;
+    border: 1px solid var(--border); overflow: hidden;
+    display: grid; grid-template-columns: 220px 1fr;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+
+  .project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+  }
+
+  .project-img {
+    width: 100%; height: 100%; min-height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+
+  .project-img img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+
+  .project-img-gradient {
+    width: 100%; height: 100%; min-height: 180px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .gradient-find-x { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); }
+  .gradient-reno { background: linear-gradient(135deg, #2d1b69 0%, #4a2c8a 50%, #7b4fd8 100%); }
+  .gradient-a-series { background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 50%, #52b788 100%); }
+  .gradient-creative { background: linear-gradient(135deg, #3d1c00 0%, #a04000 50%, #e67e22 100%); }
+  .gradient-launch { background: linear-gradient(135deg, #1a1a2e 0%, #3b3b5c 50%, #6c6c8a 100%); }
+  .gradient-gaming { background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #415a77 100%); }
+  .gradient-visual { background: linear-gradient(135deg, #ecf0f1 0%, #dfe6e9 50%, #bdc3c7 100%); }
+
+  .gradient-label {
+    color: rgba(255,255,255,0.55); font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  .gradient-visual .gradient-label { color: rgba(0,0,0,0.35); }
+
+  .project-info {
+    padding: 24px 28px; display: flex; flex-direction: column; justify-content: center;
+  }
+
+  .project-tag {
+    display: inline-block; font-size: 9px; letter-spacing: 0.07em;
+    color: var(--accent); background: var(--surface);
+    padding: 3px 9px; border-radius: 14px; margin-bottom: 8px;
+    text-transform: uppercase; font-weight: 500;
+  }
+
+  .project-info h3 {
+    font-size: 17px; font-weight: 500; margin-bottom: 7px;
+    letter-spacing: -0.01em;
+  }
+
+  .project-info p {
+    font-size: 12.5px; color: var(--text-muted); line-height: 1.65;
+    margin-bottom: 10px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .project-meta {
+    display: flex; gap: 18px; font-size: 11px; color: var(--text-faint);
+  }
+
+  /* ─── CASE STUDY MODAL ─── */
+  .modal-overlay {
+    position: fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 200; display: none; justify-content: center; align-items: center;
+    padding: 40px;
+  }
+
+  .modal-overlay.active { display: flex; }
+
+  .modal-box {
+    background: var(--bg); border-radius: 18px;
+    max-width: 680px; width: 100%; max-height: 85vh; overflow-y: auto;
+    padding: 44px 48px; position: relative;
+    border: 1px solid var(--border);
+  }
+
+  .modal-close {
+    position: absolute; top: 18px; right: 22px;
+    background: none; border: none; font-size: 22px;
+    color: var(--text-faint); cursor: pointer; transition: color 0.2s;
+    line-height: 1;
+  }
+  .modal-close:hover { color: var(--text); }
+
+  .modal-tag {
+    display: inline-block; font-size: 9px; letter-spacing: 0.07em;
+    color: var(--accent); background: var(--surface);
+    padding: 3px 9px; border-radius: 14px; margin-bottom: 12px;
+    text-transform: uppercase; font-weight: 500;
+  }
+
+  .modal-box h2 {
+    font-size: 24px; font-weight: 400; margin-bottom: 18px;
+    letter-spacing: -0.01em; line-height: 1.3;
+  }
+
+  .modal-section-title {
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin: 22px 0 8px; font-weight: 500;
+  }
+
+  .modal-box p {
+    font-size: 13.5px; color: var(--text-muted); line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .modal-metrics {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin: 18px 0;
+  }
+
+  .modal-metric {
+    background: var(--surface); border-radius: 10px; padding: 14px 16px;
+  }
+
+  .modal-metric .num { font-size: 22px; font-weight: 400; color: var(--accent-dark); letter-spacing: -0.02em; }
+  .modal-metric .lbl { font-size: 10px; color: var(--text-faint); margin-top: 2px; }
+
+  /* ─── TIMELINE ─── */
+  .timeline-section { background: var(--bg); }
+
+  .timeline {
+    position: relative; padding-left: 40px;
+    border-left: 1px solid var(--border);
+    margin-top: 36px;
+  }
+
+  .timeline-item {
+    position: relative; margin-bottom: 44px;
+  }
+
+  .timeline-dot {
+    position: absolute; left: -40px; top: 4px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+
+  .timeline-year {
+    font-size: 10px; letter-spacing: 0.1em; color: var(--accent);
+    text-transform: uppercase; font-weight: 500; margin-bottom: 4px;
+  }
+
+  .timeline-role {
+    font-size: 16px; font-weight: 500; margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  .timeline-company {
+    font-size: 12px; color: var(--text-faint); margin-bottom: 8px;
+  }
+
+  .timeline-desc {
+    font-size: 13px; color: var(--text-muted); line-height: 1.7;
+    max-width: 520px;
+  }
+
+  /* ─── ABOUT ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .about-text {
+    font-size: 14px; color: var(--text-muted); line-height: 1.85;
+  }
+
+  .about-text strong { color: var(--text); font-weight: 500; }
+
+  .philosophy-list {
+    list-style: none;
+  }
+
+  .philosophy-list li {
+    font-size: 13.5px; color: var(--text-muted); line-height: 1.8;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .philosophy-list li::before {
+    content: '';
+    position: absolute; left: 0; top: 19px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent-warm);
+  }
+
+  .philosophy-list li:last-child { border-bottom: none; }
+
+  /* ─── CAPABILITIES ─── */
+  .cap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+
+  .cap-section-title {
+    font-size: 11px; letter-spacing: 0.11em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 18px; font-weight: 500;
+  }
+
+  .cap-item {
+    margin-bottom: 20px;
+  }
+
+  .cap-item-name {
+    font-size: 13px; color: var(--text); margin-bottom: 5px;
+    font-weight: 450;
+  }
+
+  .cap-item-desc {
+    font-size: 12px; color: var(--text-faint); line-height: 1.6;
+  }
+
+  .capabilities-section { background: var(--surface); }
+
+  .cap-map-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* ─── MAP (CSS-only) ─── */
+  .map-container {
+    position: relative;
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 32px 28px;
+    min-height: 340px;
+    overflow: hidden;
+  }
+
+  .map-title {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 20px; font-weight: 500;
+  }
+
+  .map-dots {
+    position: relative;
+    width: 100%;
+    height: 240px;
+  }
+
+  .map-dot {
+    position: absolute;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(139,126,116,0.15);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .map-dot:hover {
+    transform: scale(1.6);
+  }
+
+  .map-dot-label {
+    position: absolute;
+    font-size: 9px;
+    color: var(--text-faint);
+    white-space: nowrap;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+  }
+
+  .map-dot:hover .map-dot-label {
+    opacity: 1;
+  }
+
+  .map-legend {
+    display: flex; gap: 18px; margin-top: 18px; font-size: 10px; color: var(--text-faint);
+  }
+
+  .map-legend-dot {
+    width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 5px; vertical-align: middle;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-section { background: var(--bg); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  .contact-headline {
+    font-size: 28px; font-weight: 400; line-height: 1.3;
+    letter-spacing: -0.01em; margin-bottom: 16px;
+  }
+
+  .contact-subtext {
+    font-size: 14px; color: var(--text-muted); line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .contact-details {
+    list-style: none;
+  }
+
+  .contact-details li {
+    font-size: 13px; color: var(--text-muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .contact-details a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-details a:hover { color: var(--accent-dark); text-decoration: underline; }
+
+  .contact-icon {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .contact-actions {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-top: 28px;
+  }
+
+  .footer-btn {
+    display: inline-block;
+    font-size: 13px;
+    padding: 10px 24px;
+    border-radius: 24px;
+    text-decoration: none;
+    transition: all 0.2s;
+    font-family: inherit;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .footer-btn.primary {
+    background: var(--accent);
+    color: white;
+    border: 1px solid var(--accent);
+  }
+
+  .footer-btn.primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+
+  .footer-btn.secondary {
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--border);
+  }
+
+  .footer-btn.secondary:hover { border-color: var(--accent); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--text-faint);
+    padding: 36px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ─── REVEAL ANIMATION ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── FILTERING ─── */
+  .project-card.hidden {
+    display: none;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .hero-content { grid-template-columns: 1fr; text-align: center; }
+    .hero-text { max-width: 100%; }
+    .hero-avatar { width: 120px; height: 120px; margin: 0 auto; }
+    .hero-text h1 { font-size: 30px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .stat-card:nth-child(2) { border-right: none; }
+    .stat-card:nth-child(3) { border-top: 1px solid var(--border); }
+    .stat-card:nth-child(4) { border-top: 1px solid var(--border); border-right: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .cap-map-grid { grid-template-columns: 1fr; gap: 36px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-img { min-height: 140px; }
+    .modal-metrics { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .container { padding: 0 20px; }
+    .timeline { padding-left: 28px; }
+    .modal-box { padding: 28px 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-text h1 { font-size: 24px; }
+    .section-title { font-size: 22px; }
+    .contact-headline { font-size: 22px; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo" data-i18n="nav.logo">DANIELLA QIAN</a>
+    <ul class="nav-links">
+      <li><a href="#work" data-i18n="nav.work">Work</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#timeline" data-i18n="nav.journey">Journey</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-toggle" onclick="toggleLang()" id="langBtn">EN · 中</button>
+      <a href="#contact" class="nav-resume" data-i18n="nav.resume">Resume</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-curves">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="cg1" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#C4A882" stop-opacity="0.07"/>
+          <stop offset="100%" stop-color="#8B7E74" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,520 C300,440 500,600 700,520 C900,440 1100,580 1300,510 C1400,480 1420,500 1440,490 L1440,900 L0,900 Z" fill="url(#cg1)"/>
+      <path d="M0,580 C250,490 450,640 650,550 C850,460 1000,610 1200,560 C1350,520 1400,550 1440,540 L1440,900 L0,900 Z" fill="url(#cg1)" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="hero-content reveal">
+      <div class="hero-text">
+        <div class="hero-kicker" data-i18n="hero.kicker">IMC · Brand Strategy · Global Markets</div>
+        <h1 data-i18n="hero.title">Creative direction that <em>moves people</em> — across cultures, categories, and continents.</h1>
+        <p data-i18n="hero.body">8 years crafting integrated campaigns for one of the world's largest consumer tech brands. From product launches to cultural adaptations across 13 markets — I turn product truths into brand desire.</p>
+        <div class="hero-line"></div>
+      </div>
+      <img class="hero-avatar" src="assets/avatar.jpg" alt="钱丹丹 Daniella" loading="eager">
+    </div>
+
+    <div class="stats-row reveal">
+      <div class="stat-card"><div class="stat-number">13</div><div class="stat-label" data-i18n="stats.1">Markets across<br>APAC · MEA · LATAM</div></div>
+      <div class="stat-card"><div class="stat-number">10+</div><div class="stat-label" data-i18n="stats.2">Product line<br>launches led</div></div>
+      <div class="stat-card"><div class="stat-number">3×</div><div class="stat-label" data-i18n="stats.3">TikTok exposure<br>growth delivered</div></div>
+      <div class="stat-card"><div class="stat-number">134%</div><div class="stat-label" data-i18n="stats.4">Campaign KPI<br>achievement avg.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="project-section" id="work">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-i18n="work.label">Selected Work</div>
+      <div class="section-title" data-i18n="work.title">Campaigns that travelled.</div>
+      <div class="section-body" data-i18n="work.body">Each project is a balance of brand precision and local intuition. Here are some that made the leap across borders.</div>
+    </div>
+
+    <div class="filter-bar reveal">
+      <button class="filter-btn active" onclick="filterProjects('all', this)" data-i18n="filter.all">All</button>
+      <button class="filter-btn" onclick="filterProjects('global-launch', this)" data-i18n="filter.launch">Global Launch</button>
+      <button class="filter-btn" onclick="filterProjects('creative', this)" data-i18n="filter.creative">Creative Campaign</button>
+      <button class="filter-btn" onclick="filterProjects('content', this)" data-i18n="filter.content">Content Strategy</button>
+    </div>
+
+    <div class="project-grid reveal">
+
+      <!-- Project 1: Find X8 -->
+      <div class="project-card" data-category="global-launch" onclick="openModal('findx8')">
+        <div class="project-img">
+          <img src="assets/find-x8.png" alt="OPPO Find X8" loading="lazy">
+        </div>
+        <div class="project-info">
+          <span class="project-tag" data-i18n="proj.findx8.tag">Global Launch</span>
+          <h3 data-i18n="proj.findx8.title">Find X8 Series Global IMC</h3>
+          <p data-i18n="proj.findx8.body">Led end-to-end IMC for OPPO's flagship across 13 markets. Championed telephoto as hero selling point — overrode HQ preference and hit 134% of first-sale target.</p>
+          <div class="project-meta">
+            <span data-i18n="proj.findx8.meta1">13 Markets</span>
+            <span data-i18n="proj.findx8.meta2">2025</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Reno Series -->
+      <div class="project-card" data-category="global-launch" onclick="openModal('reno')">
+        <div class="project-img">
+          <div class="project-img-gradient gradient-reno">
+            <span class="gradient-label">Reno Series · OPPO</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag" data-i18n="proj.reno.tag">Global Launch</span>
+          <h3 data-i18n="proj.reno.title">Reno Series — 3 Generations</h3>
+          <p data-i18n="proj.reno.body">Multi-generational IMC execution across Southeast Asia and Middle East. Balanced brand consistency with local cultural adaptation at scale.</p>
+          <div class="project-meta">
+            <span data-i18n="proj.reno.meta1">8 Markets</span>
+            <span data-i18n="proj.reno.meta2">2022–2025</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: A Series -->
+      <div class="project-card" data-category="global-launch" onclick="openModal('aseries')">
+        <div class="project-img">
+          <div class="project-img-gradient gradient-a-series">
+            <span class="gradient-label">A Series · OPPO</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag" data-i18n="proj.aseries.tag">Global Launch</span>
+          <h3 data-i18n="proj.aseries.title">A Series — 5 Product Lines</h3>
+          <p data-i18n="proj.aseries.body">High-volume product marketing across price-sensitive markets. Drove content strategy shift to short-form video, delivering 3× TikTok exposure growth.</p>
+          <div class="project-meta">
+            <span data-i18n="proj.aseries.meta1">10+ Markets</span>
+            <span data-i18n="proj.aseries.meta2">2022–2025</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: MEA Cultural Localization -->
+      <div class="project-card" data-category="creative" onclick="openModal('mea')">
+        <div class="project-img">
+          <div class="project-img-gradient gradient-creative">
+            <span class="gradient-label">MEA · Cultural Adaptation</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag" data-i18n="proj.mea.tag">Creative Campaign</span>
+          <h3 data-i18n="proj.mea.title">MEA Cultural Localization System</h3>
+          <p data-i18n="proj.mea.body">Built a pre-screening workflow for creative assets across Muslim-majority markets. Prevented cultural incidents before launch, zero compliance issues across 4 product lines.</p>
+          <div class="project-meta">
+            <span data-i18n="proj.mea.meta1">MEA Region</span>
+            <span data-i18n="proj.mea.meta2">2023–2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: Short Video Transformation -->
+      <div class="project-card" data-category="content" onclick="openModal('video')">
+        <div class="project-img">
+          <div class="project-img-gradient gradient-launch">
+            <span class="gradient-label">Content Strategy · OPPO</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag" data-i18n="proj.video.tag">Content Strategy</span>
+          <h3 data-i18n="proj.video.title">Short-Form Video Transformation</h3>
+          <p data-i18n="proj.video.body">Pivoted from long-form feature demos to platform-native short series based on completion rate data. TikTok exposure grew 3× across key markets.</p>
+          <div class="project-meta">
+            <span data-i18n="proj.video.meta1">Global</span>
+            <span data-i18n="proj.video.meta2">2023–2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6: Visual System Design -->
+      <div class="project-card" data-category="creative" onclick="openModal('visual')">
+        <div class="project-img">
+          <div class="project-img-gradient gradient-visual">
+            <span class="gradient-label" style="color:rgba(0,0,0,0.4);">Visual System · OPPO</span>
+          </div>
+        </div>
+        <div class="project-info">
+          <span class="project-tag" data-i18n="proj.visual.tag">Creative Campaign</span>
+          <h3 data-i18n="proj.visual.title">Global Visual System Design</h3>
+          <p data-i18n="proj.visual.body">When external vendors couldn't meet quality bar, coordinated in-house design team to deliver a complete visual system in 2–3 weeks. Ensured brand consistency across 20+ touchpoints.</p>
+          <div class="project-meta">
+            <span data-i18n="proj.visual.meta1">Global</span>
+            <span data-i18n="proj.visual.meta2">2023</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY MODALS -->
+<div class="modal-overlay" id="modal-findx8">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('findx8')">&times;</button>
+    <div class="modal-tag" data-i18n="proj.findx8.tag">Global Launch</div>
+    <h2 data-i18n="modal.findx8.title">Find X8 Series Global IMC</h2>
+    <div class="modal-section-title" data-i18n="modal.section.challenge">Challenge</div>
+    <p data-i18n="modal.findx8.challenge">HQ positioned "snapshot photography" as the primary selling point for global markets. But user research in Indonesia and Thailand told a different story — consumers cared far more about telephoto zoom capabilities for travel and portrait photography.</p>
+    <div class="modal-section-title" data-i18n="modal.section.action">Action</div>
+    <p data-i18n="modal.findx8.action">Championed telephoto as the hero selling point for overseas markets, backed by on-ground user interview data. Built a localized creative brief that balanced HQ's snapshot narrative with regional telephoto preference. Coordinated 6 external agencies across 13 markets to execute within 8 weeks.</p>
+    <div class="modal-section-title" data-i18n="modal.section.result">Result</div>
+    <div class="modal-metrics">
+      <div class="modal-metric">
+        <div class="num">134%</div>
+        <div class="lbl" data-i18n="modal.findx8.r1">First-sale target achievement</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">Top 2</div>
+        <div class="lbl" data-i18n="modal.findx8.r2">Telephoto in KBF across core markets</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">100%</div>
+        <div class="lbl" data-i18n="modal.findx8.r3">On-time delivery across 13 markets</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-reno">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('reno')">&times;</button>
+    <div class="modal-tag" data-i18n="proj.reno.tag">Global Launch</div>
+    <h2 data-i18n="modal.reno.title">Reno Series — 3 Generations IMC</h2>
+    <div class="modal-section-title" data-i18n="modal.section.challenge">Challenge</div>
+    <p data-i18n="modal.reno.challenge">Reno targets a younger, style-conscious demographic. The challenge was maintaining brand DNA across 3 product generations while adapting visual language for markets with very different aesthetic preferences — from the minimalist premium of Singapore to the vibrant, color-forward aesthetics of Indonesia.</p>
+    <div class="modal-section-title" data-i18n="modal.section.action">Action</div>
+    <p data-i18n="modal.reno.action">Developed a modular creative system that preserved core brand assets while allowing regional flavor in execution. Conducted in-market reviews in Bangkok and Jakarta to calibrate the balance between global consistency and local relevance. Trained local agency teams on the Reno brand guidelines.</p>
+    <div class="modal-section-title" data-i18n="modal.section.result">Result</div>
+    <div class="modal-metrics">
+      <div class="modal-metric">
+        <div class="num">3</div>
+        <div class="lbl" data-i18n="modal.reno.r1">Generations delivered on schedule</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">8</div>
+        <div class="lbl" data-i18n="modal.reno.r2">Markets with localized assets</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">↑ 22%</div>
+        <div class="lbl" data-i18n="modal.reno.r3">Brand recall vs. previous gen</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-aseries">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('aseries')">&times;</button>
+    <div class="modal-tag" data-i18n="proj.aseries.tag">Global Launch</div>
+    <h2 data-i18n="modal.aseries.title">A Series — 5 Product Lines</h2>
+    <div class="modal-section-title" data-i18n="modal.section.challenge">Challenge</div>
+    <p data-i18n="modal.aseries.challenge">A-series operates in highly price-sensitive markets where ROI per marketing dollar is closely scrutinized. The brief was to deliver impactful IMC on leaner budgets, while driving a content format shift from long-form to short-form video.</p>
+    <div class="modal-section-title" data-i18n="modal.section.action">Action</div>
+    <p data-i18n="modal.aseries.action">Analyzed completion rate data from previous campaigns and identified that short-form content had 3× higher watch-through rates. Reallocated budget from long-form production to native short-series for TikTok and Instagram. Simplified the creative approval workflow, reducing time-to-market by 40%.</p>
+    <div class="modal-section-title" data-i18n="modal.section.result">Result</div>
+    <div class="modal-metrics">
+      <div class="modal-metric">
+        <div class="num">3×</div>
+        <div class="lbl" data-i18n="modal.aseries.r1">TikTok exposure growth</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">5</div>
+        <div class="lbl" data-i18n="modal.aseries.r2">Product lines launched</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">40%</div>
+        <div class="lbl" data-i18n="modal.aseries.r3">Faster time-to-market</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-mea">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('mea')">&times;</button>
+    <div class="modal-tag" data-i18n="proj.mea.tag">Creative Campaign</div>
+    <h2 data-i18n="modal.mea.title">MEA Cultural Localization System</h2>
+    <div class="modal-section-title" data-i18n="modal.section.challenge">Challenge</div>
+    <p data-i18n="modal.mea.challenge">创造性素材在穆斯林市场容易触碰文化禁忌。Find X8 前期测试中，party 场景被标记 —— 在部分中东非市场，这类场景可能引发文化冲突。手动审核每个市场的每张素材既不具扩展性，也不可持续。</p>
+    <div class="modal-section-title" data-i18n="modal.section.action">Action</div>
+    <p data-i18n="modal.mea.action">建立了一套跨文化创意预审流程：在创意 brief 阶段就嵌入文化合规检查点；与区域市场团队共建禁忌场景清单；将 party / 夜间社交场景替换为家庭欢聚 / 夜间旅行等普适场景。整个流程在 2 周内完成，并沉淀为可复用的 SOP。</p>
+    <div class="modal-section-title" data-i18n="modal.section.result">Result</div>
+    <div class="modal-metrics">
+      <div class="modal-metric">
+        <div class="num">0</div>
+        <div class="lbl" data-i18n="modal.mea.r1">Cultural incidents across 4 product lines</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">4</div>
+        <div class="lbl" data-i18n="modal.mea.r2">Product lines covered by SOP</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">2周</div>
+        <div class="lbl" data-i18n="modal.mea.r3">SOP setup time</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-video">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('video')">&times;</button>
+    <div class="modal-tag" data-i18n="proj.video.tag">Content Strategy</div>
+    <h2 data-i18n="modal.video.title">Short-Form Video Transformation</h2>
+    <div class="modal-section-title" data-i18n="modal.section.challenge">Challenge</div>
+    <p data-i18n="modal.video.challenge">Previous campaign content relied heavily on feature-demonstration long videos (60s+). Completion rates were declining quarter over quarter, especially among the Reno target demographic (Gen Z). The content format was misaligned with platform behavior.</p>
+    <div class="modal-section-title" data-i18n="modal.section.action">Action</div>
+    <p data-i18n="modal.video.action">Led the pivot to platform-native short-form series. Instead of one hero video, we produced 6–8 scenario-based clips per product (travel, low-light, portrait) optimized for TikTok/Instagram Reels/Shorts algorithms. Partnered with local creators in Thailand and Indonesia to add authentic local flavor.</p>
+    <div class="modal-section-title" data-i18n="modal.section.result">Result</div>
+    <div class="modal-metrics">
+      <div class="modal-metric">
+        <div class="num">3×</div>
+        <div class="lbl" data-i18n="modal.video.r1">TikTok exposure increase</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">↑ 45%</div>
+        <div class="lbl" data-i18n="modal.video.r2">Completion rate improvement</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">6–8</div>
+        <div class="lbl" data-i18n="modal.video.r3">Short videos per product</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-visual">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('visual')">&times;</button>
+    <div class="modal-tag" data-i18n="proj.visual.tag">Creative Campaign</div>
+    <h2 data-i18n="modal.visual.title">Global Visual System Design</h2>
+    <div class="modal-section-title" data-i18n="modal.section.challenge">Challenge</div>
+    <p data-i18n="modal.visual.challenge">External creative vendors were consistently missing OPPO's quality bar for global visual assets. Inconsistent lighting, off-brand color grading, and delayed revisions were creating brand fragmentation across 20+ consumer touchpoints — from e-commerce main images to in-store displays.</p>
+    <div class="modal-section-title" data-i18n="modal.section.action">Action</div>
+    <p data-i18n="modal.visual.action">Proactively coordinated OPPO's in-house senior design team to take over visual system development. Defined a comprehensive visual language guide (lighting, color palette, composition, typography) within 1 week. The in-house team delivered the complete system in 2–3 weeks. Established a visual QA checklist for all future campaigns.</p>
+    <div class="modal-section-title" data-i18n="modal.section.result">Result</div>
+    <div class="modal-metrics">
+      <div class="modal-metric">
+        <div class="num">20+</div>
+        <div class="lbl" data-i18n="modal.visual.r1">Touchpoints unified</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">2–3周</div>
+        <div class="lbl" data-i18n="modal.visual.r2">Delivery time (in-house)</div>
+      </div>
+      <div class="modal-metric">
+        <div class="num">100%</div>
+        <div class="lbl" data-i18n="modal.visual.r3">Brand consistency score</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<section class="timeline-section" id="timeline">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" data-i18n="timeline.label">My Journey</div>
+      <div class="section-title" data-i18n="timeline.title">A path through stories, games, and technology.</div>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year" data-i18n="timeline.item1.year">2016 — TV Production</div>
+        <div class="timeline-role" data-i18n="timeline.item1.role">Content Producer & Director</div>
+        <div class="timeline-company" data-i18n="timeline.item1.company">Shenzhen Media Group</div>
+        <div class="timeline-desc" data-i18n="timeline.item1.desc">Learned the craft of storytelling and live production. Every frame needed to earn the audience's attention — a lesson that still shapes how I approach brand communication today.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year" data-i18n="timeline.item2.year">2018 — Creative Agency</div>
+        <div class="timeline-role" data-i18n="timeline.item2.role">Senior Project Manager</div>
+        <div class="timeline-company" data-i18n="timeline.item2.company">Shenzhen Dianwei Culture</div>
+        <div class="timeline-desc" data-i18n="timeline.item2.desc">Managed end-to-end ad production for top-tier gaming clients (NetEase, Tencent). Built a premium creative vendor network and learned how to bridge client strategy with creative execution.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year" data-i18n="timeline.item3.year">2021 — Global Gaming</div>
+        <div class="timeline-role" data-i18n="timeline.item3.role">Overseas Publishing Marketing PM</div>
+        <div class="timeline-company" data-i18n="timeline.item3.company">ByteDance · Nuverse</div>
+        <div class="timeline-desc" data-i18n="timeline.item3.desc">Managed IMC resources for 6+ overseas game titles including a MARVEL IP project. Built cross-functional SOPs from 0→1. First real immersion into overseas marketing at scale.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year" data-i18n="timeline.item4.year">2022 — Consumer Tech</div>
+        <div class="timeline-role" data-i18n="timeline.item4.role">Creative Project Manager, Overseas</div>
+        <div class="timeline-company" data-i18n="timeline.item4.company">OPPO</div>
+        <div class="timeline-desc" data-i18n="timeline.item4.desc">Leading IMC for Find X, Reno, and A-series across 13 markets. Every launch is a new puzzle — how to make a product feel both globally consistent and locally inevitable.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div>
+        <div class="section-label" data-i18n="about.label">About Me</div>
+        <div class="section-title" data-i18n="about.title">I believe good marketing starts with listening.</div>
+        <div class="about-text">
+          <p data-i18n="about.p1">I started my career as a TV producer and director at Shenzhen Media Group, where I learned the fundamentals of <strong>storytelling and audience attention</strong>. That foundation carried me through creative agencies serving top gaming clients, to ByteDance's gaming division, and finally to OPPO — where I've spent 4 years leading IMC for key product lines across 13 global markets.</p>
+          <p style="margin-top:14px" data-i18n="about.p2">Along the way, I earned an <strong>MSc in Global Marketing from the University of Sheffield</strong> and a dual BA from Shenzhen University. I thrive at the intersection of creative intuition and data-driven decision-making — knowing when a campaign needs more emotion, and when it needs more evidence.</p>
+          <p style="margin-top:14px" data-i18n="about.p3">I'm a naturally curious person who loves exploring new things. These days I'm teaching myself AI tools and workflows — because the next generation of marketing will be built at the intersection of human creativity and machine intelligence. Currently based in Shenzhen. Open to global opportunities.</p>
+        </div>
+      </div>
+      <div>
+        <div class="section-label" data-i18n="about.philosophy.label">Work Philosophy</div>
+        <ul class="philosophy-list">
+          <li data-i18n="about.philosophy.1">Data informs, it doesn't decide. The best campaigns balance sharp analytics with human intuition.</li>
+          <li data-i18n="about.philosophy.2">Culture is not an afterthought. It belongs in the brief, not the review.</li>
+          <li data-i18n="about.philosophy.3">Good process creates better creativity. Chaos doesn't scale — systems do.</li>
+          <li data-i18n="about.philosophy.4">Stay curious. The best ideas often show up when you're exploring something unrelated.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES + MAP -->
+<section class="capabilities-section">
+  <div class="container">
+    <div class="cap-map-grid reveal">
+      <div>
+        <div class="cap-section-title" data-i18n="cap.title">What I Do</div>
+
+        <div class="cap-item">
+          <div class="cap-item-name" data-i18n="cap.1.name">IMC Strategy & Execution</div>
+          <div class="cap-item-desc" data-i18n="cap.1.desc">End-to-end campaign planning, creative development, multi-channel rollout, and performance analysis. I've shipped 10+ product lines across 13 markets.</div>
+        </div>
+
+        <div class="cap-item">
+          <div class="cap-item-name" data-i18n="cap.2.name">Cross-Cultural Localization</div>
+          <div class="cap-item-desc" data-i18n="cap.2.desc">Creative brief adaptation, cultural compliance pre-screening, and regional aesthetic calibration. Built a reusable SOP for Muslim-market creative review.</div>
+        </div>
+
+        <div class="cap-item">
+          <div class="cap-item-name" data-i18n="cap.3.name">Content Strategy & Production</div>
+          <div class="cap-item-desc" data-i18n="cap.3.desc">Platform-native content strategies (TikTok, Instagram, YouTube). Led the pivot from long-form to short-form at OPPO, delivering 3× exposure growth.</div>
+        </div>
+
+        <div class="cap-item">
+          <div class="cap-item-name" data-i18n="cap.4.name">Vendor & Stakeholder Management</div>
+          <div class="cap-item-desc" data-i18n="cap.4.desc">Coordinating 6+ external agencies simultaneously. When vendors can't meet the bar, I know how to mobilize in-house resources to protect brand quality.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="map-container">
+          <div class="map-title" data-i18n="map.title">Markets I've worked in</div>
+          <div class="map-dots">
+            <!-- SEA -->
+            <div class="map-dot" style="left:68%; top:62%;"><span class="map-dot-label">Thailand</span></div>
+            <div class="map-dot" style="left:72%; top:65%;"><span class="map-dot-label">Indonesia</span></div>
+            <div class="map-dot" style="left:70%; top:60%;"><span class="map-dot-label">Singapore</span></div>
+            <div class="map-dot" style="left:66%; top:64%;"><span class="map-dot-label">Vietnam</span></div>
+            <div class="map-dot" style="left:64%; top:66%;"><span class="map-dot-label">Philippines</span></div>
+            <div class="map-dot" style="left:58%; top:56%;"><span class="map-dot-label">India</span></div>
+            <!-- MEA -->
+            <div class="map-dot" style="left:52%; top:50%;"><span class="map-dot-label">UAE</span></div>
+            <div class="map-dot" style="left:48%; top:54%;"><span class="map-dot-label">Saudi Arabia</span></div>
+            <div class="map-dot" style="left:46%; top:58%;"><span class="map-dot-label">Egypt</span></div>
+            <!-- LATAM -->
+            <div class="map-dot" style="left:22%; top:64%;"><span class="map-dot-label">Mexico</span></div>
+            <div class="map-dot" style="left:26%; top:72%;"><span class="map-dot-label">Brazil</span></div>
+            <div class="map-dot" style="left:20%; top:60%;"><span class="map-dot-label">Colombia</span></div>
+          </div>
+          <div class="map-legend">
+            <div><span class="map-legend-dot" style="background:var(--accent);"></span><span data-i18n="map.sea">SEA</span></div>
+            <div><span class="map-legend-dot" style="background:#B0ACA5;"></span><span data-i18n="map.mea">MEA</span></div>
+            <div><span class="map-legend-dot" style="background:#C4A882;"></span><span data-i18n="map.latin">LATAM</span></div>
+          </div>
+        </div>
+
+        <div style="margin-top:36px;">
+          <div class="cap-section-title" data-i18n="brands.title">Brands I've worked with</div>
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:14px;">
+            <span style="font-size:11px; padding:5px 12px; border:1px solid var(--border); border-radius:16px; color:var(--text-muted);" data-i18n="brands.1">OPPO</span>
+            <span style="font-size:11px; padding:5px 12px; border:1px solid var(--border); border-radius:16px; color:var(--text-muted);" data-i18n="brands.2">NetEase Games</span>
+            <span style="font-size:11px; padding:5px 12px; border:1px solid var(--border); border-radius:16px; color:var(--text-muted);" data-i18n="brands.3">Tencent Games</span>
+            <span style="font-size:11px; padding:5px 12px; border:1px solid var(--border); border-radius:16px; color:var(--text-muted);" data-i18n="brands.4">MARVEL (ByteDance)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-grid reveal">
+      <div>
+        <div class="section-label" data-i18n="contact.label">Get in Touch</div>
+        <div class="contact-headline" data-i18n="contact.title">Let's build something that travels.</div>
+        <div class="contact-subtext" data-i18n="contact.body">Whether it's a new product launch, a brand repositioning, or a market entry strategy — I'd love to hear what you're working on.</div>
+        <ul class="contact-details">
+          <li>
+            <div class="contact-icon">✉</div>
+            <div><a href="mailto:qian.daniella@gmail.com" data-i18n="contact.email">qian.daniella@gmail.com</a></div>
+          </li>
+          <li>
+            <div class="contact-icon">▶</div>
+            <div><a href="https://www.linkedin.com/in/danni-qian-8918a7b0/" target="_blank" data-i18n="contact.linkedin">linkedin.com/in/danni-qian</a></div>
+          </li>
+          <li>
+            <div class="contact-icon">☐</div>
+            <div data-i18n="contact.location">Shenzhen, China · Open to relocation</div>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="contact-actions">
+          <a href="#" class="footer-btn primary" onclick="downloadResume(); return false;" data-i18n="contact.btn1">Download Resume (EN)</a>
+          <a href="#" class="footer-btn secondary" onclick="downloadResumeCN(); return false;" data-i18n="contact.btn2">下载简历 (中文)</a>
+        </div>
+        <div style="margin-top:36px;">
+          <div class="section-label" data-i18n="contact.langlabel">Languages</div>
+          <div style="font-size:13px; color:var(--text-muted); line-height:1.8;" data-i18n="contact.langs">Mandarin Chinese (Native) · English (Fluent, working language)</div>
+        </div>
+        <div style="margin-top:24px;">
+          <div class="section-label" data-i18n="contact.toolslabel">Tools I Use</div>
+          <div style="font-size:12.5px; color:var(--text-muted); line-height:1.8;" data-i18n="contact.tools">Adobe CC · Figma · Google Analytics 4 · Meta Ads · TikTok Ads · AI Tools (exploring)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-i18n="footer">© 2026 钱丹丹 Daniella Qian · Built with intention.</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  // ─── I18N DICTIONARY ───
+  var T = {
+    en: {},
+    zh: {}
+  };
+
+  // NAV
+  T.en["nav.logo"] = "DANIELLA QIAN";
+  T.zh["nav.logo"] = "钱 丹 丹";
+  T.en["nav.work"] = "Work";
+  T.zh["nav.work"] = "作品";
+  T.en["nav.about"] = "About";
+  T.zh["nav.about"] = "关于";
+  T.en["nav.journey"] = "Journey";
+  T.zh["nav.journey"] = "经历";
+  T.en["nav.contact"] = "Contact";
+  T.zh["nav.contact"] = "联系";
+  T.en["nav.resume"] = "Resume";
+  T.zh["nav.resume"] = "简历";
+
+  // HERO
+  T.en["hero.kicker"] = "IMC · Brand Strategy · Global Markets";
+  T.zh["hero.kicker"] = "整合营销 · 品牌策略 · 全球市场";
+  T.en["hero.title"] = "Creative direction that <em>moves people</em> — across cultures, categories, and continents.";
+  T.zh["hero.title"] = "让创意<em>穿越</em>文化与大陆 —— 这是我做的事。";
+  T.en["hero.body"] = "8 years crafting integrated campaigns for one of the world's largest consumer tech brands. From product launches to cultural adaptations across 13 markets — I turn product truths into brand desire.";
+  T.zh["hero.body"] = "8年，服务于全球最大的消费科技公司之一。从产品发布到跨文化适配，覆盖13个市场——我把产品的真实特质，转化为人们想要的品牌渴望。";
+
+  // STATS
+  T.en["stats.1"] = "Markets across<br>APAC · MEA · LATAM";
+  T.zh["stats.1"] = "市场覆盖<br>亚太 · 中东非 · 拉美";
+  T.en["stats.2"] = "Product line<br>launches led";
+  T.zh["stats.2"] = "主导产品<br>发布线数";
+  T.en["stats.3"] = "TikTok exposure<br>growth delivered";
+  T.zh["stats.3"] = "TikTok 曝光<br>增长倍数";
+  T.en["stats.4"] = "Campaign KPI<br>achievement avg.";
+  T.zh["stats.4"] = "Campaign KPI<br>平均达成率";
+
+  // WORK SECTION
+  T.en["work.label"] = "Selected Work";
+  T.zh["work.label"] = "精选项目";
+  T.en["work.title"] = "Campaigns that travelled.";
+  T.zh["work.title"] = "走过很多路的作品。";
+  T.en["work.body"] = "Each project is a balance of brand precision and local intuition. Here are some that made the leap across borders.";
+  T.zh["work.body"] = "每一个项目，都是品牌精确度与本地直觉的平衡。以下是几个真正跨越了边界的案例。";
+
+  // FILTER
+  T.en["filter.all"] = "All";
+  T.zh["filter.all"] = "全部";
+  T.en["filter.launch"] = "Global Launch";
+  T.zh["filter.launch"] = "全球发布";
+  T.en["filter.creative"] = "Creative Campaign";
+  T.zh["filter.creative"] = "创意活动";
+  T.en["filter.content"] = "Content Strategy";
+  T.zh["filter.content"] = "内容策略";
+
+  // PROJECT CARDS
+  T.en["proj.findx8.tag"] = "Global Launch";
+  T.zh["proj.findx8.tag"] = "全球发布";
+  T.en["proj.findx8.title"] = "Find X8 Series Global IMC";
+  T.zh["proj.findx8.title"] = "Find X8 系列全球 IMC";
+  T.en["proj.findx8.body"] = "Led end-to-end IMC for OPPO's flagship across 13 markets. Championed telephoto as hero selling point — overrode HQ preference and hit 134% of first-sale target.";
+  T.zh["proj.findx8.body"] = "主导 OPPO 旗舰系列在13个市场的端到端 IMC 执行。坚持将长焦作为海外主推卖点——推翻了总部的抓拍倾向，最终首销目标达成率 134%。";
+  T.en["proj.findx8.meta1"] = "13 Markets";
+  T.zh["proj.findx8.meta1"] = "13 个市场";
+  T.en["proj.findx8.meta2"] = "2025";
+  T.zh["proj.findx8.meta2"] = "2025";
+
+  T.en["proj.reno.tag"] = "Global Launch";
+  T.zh["proj.reno.tag"] = "全球发布";
+  T.en["proj.reno.title"] = "Reno Series — 3 Generations";
+  T.zh["proj.reno.title"] = "Reno 系列 —— 三代产品";
+  T.en["proj.reno.body"] = "Multi-generational IMC execution across Southeast Asia and Middle East. Balanced brand consistency with local cultural adaptation at scale.";
+  T.zh["proj.reno.body"] = "横跨东南亚与中东的三代产品 IMC 执行。在规模化落地中，平衡了品牌一致性与本地文化适配。";
+  T.en["proj.reno.meta1"] = "8 Markets";
+  T.zh["proj.reno.meta1"] = "8 个市场";
+  T.en["proj.reno.meta2"] = "2022–2025";
+  T.zh["proj.reno.meta2"] = "2022–2025";
+
+  T.en["proj.aseries.tag"] = "Global Launch";
+  T.zh["proj.aseries.tag"] = "全球发布";
+  T.en["proj.aseries.title"] = "A Series — 5 Product Lines";
+  T.zh["proj.aseries.title"] = "A 系列 —— 5 条产品线";
+  T.en["proj.aseries.body"] = "High-volume product marketing across price-sensitive markets. Drove content strategy shift to short-form video, delivering 3× TikTok exposure growth.";
+  T.zh["proj.aseries.body"] = "在价格敏感市场做大规模产品营销。推动内容策略向短视频转型，TikTok 曝光量增长 3 倍。";
+  T.en["proj.aseries.meta1"] = "10+ Markets";
+  T.zh["proj.aseries.meta1"] = "10+ 市场";
+  T.en["proj.aseries.meta2"] = "2022–2025";
+  T.zh["proj.aseries.meta2"] = "2022–2025";
+
+  T.en["proj.mea.tag"] = "Creative Campaign";
+  T.zh["proj.mea.tag"] = "创意活动";
+  T.en["proj.mea.title"] = "MEA Cultural Localization System";
+  T.zh["proj.mea.title"] = "中东非文化本地化体系";
+  T.en["proj.mea.body"] = "Built a pre-screening workflow for creative assets across Muslim-majority markets. Prevented cultural incidents before launch, zero compliance issues across 4 product lines.";
+  T.zh["proj.mea.body"] = "为穆斯林市场建立创意素材预审流程。上市前规避文化风险，4 条产品线零合规事故。";
+  T.en["proj.mea.meta1"] = "MEA Region";
+  T.zh["proj.mea.meta1"] = "中东非区域";
+  T.en["proj.mea.meta2"] = "2023–2024";
+  T.zh["proj.mea.meta2"] = "2023–2024";
+
+  T.en["proj.video.tag"] = "Content Strategy";
+  T.zh["proj.video.tag"] = "内容策略";
+  T.en["proj.video.title"] = "Short-Form Video Transformation";
+  T.zh["proj.video.title"] = "短视频转型";
+  T.en["proj.video.body"] = "Pivoted from long-form feature demos to platform-native short series based on completion rate data. TikTok exposure grew 3× across key markets.";
+  T.zh["proj.video.body"] = "基于完播率数据，推动从功能长视频向平台原生短视频转型。核心市场 TikTok 曝光量增长 3 倍。";
+  T.en["proj.video.meta1"] = "Global";
+  T.zh["proj.video.meta1"] = "全球";
+  T.en["proj.video.meta2"] = "2023–2024";
+  T.zh["proj.video.meta2"] = "2023–2024";
+
+  T.en["proj.visual.tag"] = "Creative Campaign";
+  T.zh["proj.visual.tag"] = "创意活动";
+  T.en["proj.visual.title"] = "Global Visual System Design";
+  T.zh["proj.visual.title"] = "全球视觉系统设计";
+  T.en["proj.visual.body"] = "When external vendors couldn't meet quality bar, coordinated in-house design team to deliver a complete visual system in 2–3 weeks. Ensured brand consistency across 20+ touchpoints.";
+  T.zh["proj.visual.body"] = "外部供应商无法达标时，主动协调内部设计团队，2-3 周内完成完整视觉系统开发，保障全球 20+ 触点品牌一致性。";
+  T.en["proj.visual.meta1"] = "Global";
+  T.zh["proj.visual.meta1"] = "全球";
+  T.en["proj.visual.meta2"] = "2023";
+  T.zh["proj.visual.meta2"] = "2023";
+
+  // MODAL: findx8
+  T.en["modal.section.challenge"] = "Challenge";
+  T.zh["modal.section.challenge"] = "核心挑战";
+  T.en["modal.section.action"] = "Action";
+  T.zh["modal.section.action"] = "解决方案";
+  T.en["modal.section.result"] = "Result";
+  T.zh["modal.section.result"] = "成果";
+
+  T.en["modal.findx8.title"] = "Find X8 Series Global IMC";
+  T.zh["modal.findx8.title"] = "Find X8 系列全球 IMC";
+  T.en["modal.findx8.challenge"] = 'HQ positioned "snapshot photography" as the primary selling point for global markets. But user research in Indonesia and Thailand told a different story — consumers cared far more about telephoto zoom capabilities for travel and portrait photography.';
+  T.zh["modal.findx8.challenge"] = "总部将「抓拍」作为全球主推卖点。但印尼和泰国的用户调研讲了一个不同的故事——消费者更在意长焦变焦能力，尤其是旅行和人像场景。";
+  T.en["modal.findx8.action"] = "Championed telephoto as the hero selling point for overseas markets, backed by on-ground user interview data. Built a localized creative brief that balanced HQ's snapshot narrative with regional telephoto preference. Coordinated 6 external agencies across 13 markets to execute within 8 weeks.";
+  T.zh["modal.findx8.action"] = "基于一线用户访谈数据，坚持将长焦作为海外主推卖点。构建了一个平衡总部抓拍叙事与区域长焦偏好的本地化创意 brief，并协调 13 个市场的 6 家外部代理商在 8 周内完成执行。";
+  T.en["modal.findx8.r1"] = "First-sale target achievement";
+  T.zh["modal.findx8.r1"] = "首销目标达成率";
+  T.en["modal.findx8.r2"] = "Telephoto in KBF across core markets";
+  T.zh["modal.findx8.r2"] = "核心市场 KBF 长焦进入前二";
+  T.en["modal.findx8.r3"] = "On-time delivery across 13 markets";
+  T.zh["modal.findx8.r3"] = "13 个市场准时交付";
+
+  // MODAL: reno
+  T.en["modal.reno.title"] = "Reno Series — 3 Generations IMC";
+  T.zh["modal.reno.title"] = "Reno 系列 —— 三代产品 IMC";
+  T.en["modal.reno.challenge"] = "Reno targets a younger, style-conscious demographic. The challenge was maintaining brand DNA across 3 product generations while adapting visual language for markets with very different aesthetic preferences — from the minimalist premium of Singapore to the vibrant, color-forward aesthetics of Indonesia.";
+  T.zh["modal.reno.challenge"] = "Reno 面向更年轻、注重风格的消费群体。挑战在于：在三到产品迭代中保持品牌 DNA 不变，同时为审美偏好截然不同的市场调整视觉语言——从新加坡的极简高端感到印尼的鲜艳色彩感。";
+  T.en["modal.reno.action"] = "Developed a modular creative system that preserved core brand assets while allowing regional flavor in execution. Conducted in-market reviews in Bangkok and Jakarta to calibrate the balance between global consistency and local relevance. Trained local agency teams on the Reno brand guidelines.";
+  T.zh["modal.reno.action"] = "开发了一套模块化创意系统，在保留核心品牌资产的同时，允许执行层面的区域特色。在曼谷和雅加达进行实地审核，校准全球一致性与本地相关性的平衡，并对本地代理商团队进行 Reno 品牌指南培训。";
+  T.en["modal.reno.r1"] = "Generations delivered on schedule";
+  T.zh["modal.reno.r1"] = "准时交付的迭代代数";
+  T.en["modal.reno.r2"] = "Markets with localized assets";
+  T.zh["modal.reno.r2"] = "本地化素材覆盖市场数";
+  T.en["modal.reno.r3"] = "Brand recall vs. previous gen";
+  T.zh["modal.reno.r3"] = "品牌回忆度较上代提升";
+
+  // MODAL: aseries
+  T.en["modal.aseries.title"] = "A Series — 5 Product Lines";
+  T.zh["modal.aseries.title"] = "A 系列 —— 5 条产品线";
+  T.en["modal.aseries.challenge"] = "A-series operates in highly price-sensitive markets where ROI per marketing dollar is closely scrutinized. The brief was to deliver impactful IMC on leaner budgets, while driving a content format shift from long-form to short-form video.";
+  T.zh["modal.aseries.challenge"] = "A 系列在价格高度敏感的市场运营，每一笔营销预算的 ROI 都被严格审视。任务是在更紧的预算下交付有影响力的 IMC，同时推动内容格式从长视频向短视频转型。";
+  T.en["modal.aseries.action"] = "Analyzed completion rate data from previous campaigns and identified that short-form content had 3× higher watch-through rates. Reallocated budget from long-form production to native short-series for TikTok and Instagram. Simplified the creative approval workflow, reducing time-to-market by 40%.";
+  T.zh["modal.aseries.action"] = "分析前代 campaign 的完播率数据，发现短视频的完播率是长视频的 3 倍。将预算从长视频制作重新分配给 TikTok 和 Instagram 的原生短剧。简化了创意审批流程，上市时间缩短 40%。";
+  T.en["modal.aseries.r1"] = "TikTok exposure growth";
+  T.zh["modal.aseries.r1"] = "TikTok 曝光量增长";
+  T.en["modal.aseries.r2"] = "Product lines launched";
+  T.zh["modal.aseries.r2"] = "已发布产品线";
+  T.en["modal.aseries.r3"] = "Faster time-to-market";
+  T.zh["modal.aseries.r3"] = "上市周期缩短";
+
+  // MODAL: mea
+  T.en["modal.mea.title"] = "MEA Cultural Localization System";
+  T.zh["modal.mea.title"] = "中东非文化本地化体系";
+  T.en["modal.mea.challenge"] = "Creative assets easily touch cultural taboos in Muslim-majority markets. Party scenes flagged during Find X8 pre-testing — in some MEA markets, these scenes could trigger cultural conflict. Manually reviewing every asset for every market was neither scalable nor sustainable.";
+  T.zh["modal.mea.challenge"] = "创意素材在穆斯林人口占多数的市场很容易触碰文化禁忌。Find X8 前期测试中，party 场景被标记——在部分中东非市场，这类场景可能引发文化冲突。手动审核每个市场的每张素材，既不可扩展，也不可持续。";
+  T.en["modal.mea.action"] = "Built a cross-cultural creative pre-screening workflow: embedded cultural compliance checkpoints into the creative brief stage; co-created a taboo scene list with regional market teams; replaced party/nightlife scenes with universal scenarios like family gatherings and night travel. Completed within 2 weeks and codified into a reusable SOP.";
+  T.zh["modal.mea.action"] = "建立了一套跨文化创意预审流程：在创意 brief 阶段就嵌入文化合规检查点；与区域市场团队共建禁忌场景清单；将 party / 夜间社交场景替换为家庭欢聚 / 夜间旅行等普适场景。整个流程在 2 周内完成，并沉淀为可复用的 SOP。";
+  T.en["modal.mea.r1"] = "Cultural incidents across 4 product lines";
+  T.zh["modal.mea.r1"] = "4 条产品线文化事故数";
+  T.en["modal.mea.r2"] = "Product lines covered by SOP";
+  T.zh["modal.mea.r2"] = "SOP 覆盖产品线数";
+  T.en["modal.mea.r3"] = "SOP setup time";
+  T.zh["modal.mea.r3"] = "SOP 搭建周期";
+
+  // MODAL: video
+  T.en["modal.video.title"] = "Short-Form Video Transformation";
+  T.zh["modal.video.title"] = "短视频转型";
+  T.en["modal.video.challenge"] = "Previous campaign content relied heavily on feature-demonstration long videos (60s+). Completion rates were declining quarter over quarter, especially among the Reno target demographic (Gen Z). The content format was misaligned with platform behavior.";
+  T.zh["modal.video.challenge"] = "此前的 campaign 内容严重依赖功能演示长视频（60秒以上）。完播率逐季下降，尤其是 Reno 的目标人群（Gen Z）中。内容格式与平台使用习惯严重错位。";
+  T.en["modal.video.action"] = "Led the pivot to platform-native short-form series. Instead of one hero video, we produced 6–8 scenario-based clips per product (travel, low-light, portrait) optimized for TikTok/Instagram Reels/Shorts algorithms. Partnered with local creators in Thailand and Indonesia to add authentic local flavor.";
+  T.zh["modal.video.action"] = "主导向平台原生短视频系列的转型。不再只做一支 hero video，而是每个产品产出 6-8 条场景化短片（旅行、弱光、人像），针对 TikTok / Instagram Reels / Shorts 算法优化。与泰国和印尼的本地创作者合作，增加真实的本地感。";
+  T.en["modal.video.r1"] = "TikTok exposure increase";
+  T.zh["modal.video.r1"] = "TikTok 曝光量增长";
+  T.en["modal.video.r2"] = "Completion rate improvement";
+  T.zh["modal.video.r2"] = "完播率提升";
+  T.en["modal.video.r3"] = "Short videos per product";
+  T.zh["modal.video.r3"] = "每条产品短视频数";
+
+  // MODAL: visual
+  T.en["modal.visual.title"] = "Global Visual System Design";
+  T.zh["modal.visual.title"] = "全球视觉系统设计";
+  T.en["modal.visual.challenge"] = "External creative vendors were consistently missing OPPO's quality bar for global visual assets. Inconsistent lighting, off-brand color grading, and delayed revisions were creating brand fragmentation across 20+ consumer touchpoints — from e-commerce main images to in-store displays.";
+  T.zh["modal.visual.challenge"] = "外部创意供应商始终无法达到 OPPO 全球视觉资产的质量标准。不一致的光影、偏离品牌的调色、延迟的修改，正在导致 20+ 消费者触点的品牌碎片化——从电商主图到店内陈列。";
+  T.en["modal.visual.action"] = "Proactively coordinated OPPO's in-house senior design team to take over visual system development. Defined a comprehensive visual language guide (lighting, color palette, composition, typography) within 1 week. The in-house team delivered the complete system in 2–3 weeks. Established a visual QA checklist for all future campaigns.";
+  T.zh["modal.visual.action"] = "主动协调 OPPO 内部资深设计团队接手视觉系统开发。在 1 周内定义了完整的视觉语言指南（光影、调色板、构图、字体）。内部团队在 2-3 周内交付了完整系统。为所有后续 campaign 建立了视觉 QA 检查清单。";
+  T.en["modal.visual.r1"] = "Touchpoints unified";
+  T.zh["modal.visual.r1"] = "统一触点数量";
+  T.en["modal.visual.r2"] = "Delivery time (in-house)";
+  T.zh["modal.visual.r2"] = "交付周期（内部）";
+  T.en["modal.visual.r3"] = "Brand consistency score";
+  T.zh["modal.visual.r3"] = "品牌一致性得分";
+
+  // TIMELINE
+  T.en["timeline.label"] = "My Journey";
+  T.zh["timeline.label"] = "我的经历";
+  T.en["timeline.title"] = "A path through stories, games, and technology.";
+  T.zh["timeline.title"] = "一条穿过故事、游戏和科技的路。";
+  T.en["timeline.item1.year"] = "2016 — TV Production";
+  T.zh["timeline.item1.year"] = "2016 —— 电视制作";
+  T.en["timeline.item1.role"] = "Content Producer & Director";
+  T.zh["timeline.item1.role"] = "内容编导";
+  T.en["timeline.item1.company"] = "Shenzhen Media Group";
+  T.zh["timeline.item1.company"] = "深圳广播电视集团";
+  T.en["timeline.item1.desc"] = "Learned the craft of storytelling and live production. Every frame needed to earn the audience's attention — a lesson that still shapes how I approach brand communication today.";
+  T.zh["timeline.item1.desc"] = "学会了讲故事和现场制作的技艺。每一帧都需要赢得观众的注意力——这个教训至今仍在塑造我处理品牌传播的方式。";
+
+  T.en["timeline.item2.year"] = "2018 — Creative Agency";
+  T.zh["timeline.item2.year"] = "2018 —— 创意代理商";
+  T.en["timeline.item2.role"] = "Senior Project Manager";
+  T.zh["timeline.item2.role"] = "资深项目经理";
+  T.en["timeline.item2.company"] = "Shenzhen Dianwei Culture";
+  T.zh["timeline.item2.company"] = "深圳点维文化";
+  T.en["timeline.item2.desc"] = "Managed end-to-end ad production for top-tier gaming clients (NetEase, Tencent). Built a premium creative vendor network and learned how to bridge client strategy with creative execution.";
+  T.zh["timeline.item2.desc"] = "为头部游戏客户（网易、腾讯）管理端到端广告制作。建立了优质创意供应商网络，学会了如何把客户策略与创意执行连接起来。";
+
+  T.en["timeline.item3.year"] = "2021 — Global Gaming";
+  T.zh["timeline.item3.year"] = "2021 —— 全球游戏";
+  T.en["timeline.item3.role"] = "Overseas Publishing Marketing PM";
+  T.zh["timeline.item3.role"] = "海外发行营销 PM";
+  T.en["timeline.item3.company"] = "ByteDance · Nuverse";
+  T.zh["timeline.item3.company"] = "字节跳动 · 朝夕光年";
+  T.en["timeline.item3.desc"] = "Managed IMC resources for 6+ overseas game titles including a MARVEL IP project. Built cross-functional SOPs from 0→1. First real immersion into overseas marketing at scale.";
+  T.zh["timeline.item3.desc"] = "管理 6+ 款海外游戏（含漫威 IP 项目）的 IMC 资源。从 0→1 搭建跨职能 SOP 体系。第一次真正深入规模化海外营销。";
+
+  T.en["timeline.item4.year"] = "2022 — Consumer Tech";
+  T.zh["timeline.item4.year"] = "2022 —— 消费科技";
+  T.en["timeline.item4.role"] = "Creative Project Manager, Overseas";
+  T.zh["timeline.item4.role"] = "海外销服创意项目经理";
+  T.en["timeline.item4.company"] = "OPPO";
+  T.zh["timeline.item4.company"] = "OPPO";
+  T.en["timeline.item4.desc"] = "Leading IMC for Find X, Reno, and A-series across 13 markets. Every launch is a new puzzle — how to make a product feel both globally consistent and locally inevitable.";
+  T.zh["timeline.item4.desc"] = "主导 Find X、Reno 和 A 系列在 13 个市场的 IMC。每次发布都是一个新谜题——如何让一个产品既在全球保持一致，又在本地显得理所当然。";
+
+  // ABOUT
+  T.en["about.label"] = "About Me";
+  T.zh["about.label"] = "关于我";
+  T.en["about.title"] = "I believe good marketing starts with listening.";
+  T.zh["about.title"] = "我相信好的营销，从倾听开始。";
+  T.en["about.p1"] = 'I started my career as a TV producer and director at Shenzhen Media Group, where I learned the fundamentals of <strong>storytelling and audience attention</strong>. That foundation carried me through creative agencies serving top gaming clients, to ByteDance\'s gaming division, and finally to OPPO — where I\'ve spent 4 years leading IMC for key product lines across 13 global markets.';
+  T.zh["about.p1"] = "我的职业生涯始于深圳广电的电视编导，在那里我学到了<strong>讲故事和抓住观众注意力</strong>的基本功。这个基础带着我走过服务头部游戏客户的创意代理商，到字节跳动的游戏部门，最后来到 OPPO——在这里我已经花了 4 年时间，主导 13 个全球市场的核心产品线 IMC。";
+  T.en["about.p2"] = 'Along the way, I earned an <strong>MSc in Global Marketing from the University of Sheffield</strong> and a dual BA from Shenzhen University. I thrive at the intersection of creative intuition and data-driven decision-making — knowing when a campaign needs more emotion, and when it needs more evidence.';
+  T.zh["about.p2"] = "一路上，我拿到了<strong>英国谢菲尔德大学全球市场营销硕士</strong>，以及深圳大学双学位。我在创意直觉和数据驱动决策的交叉点最驾轻就熟——知道什么时候一个 campaign 需要更多情感，什么时候需要更多证据。";
+  T.en["about.p3"] = "I'm a naturally curious person who loves exploring new things. These days I'm teaching myself AI tools and workflows — because the next generation of marketing will be built at the intersection of human creativity and machine intelligence. Currently based in Shenzhen. Open to global opportunities.";
+  T.zh["about.p3"] = "我是一个天生好奇、喜欢探索新事物的人。这段时间我在自学 AI 工具和工作流——因为下一代营销，将建立在人类创造力与机器智能的交叉点上。目前在深圳，接受全球机会。";
+
+  T.en["about.philosophy.label"] = "Work Philosophy";
+  T.zh["about.philosophy.label"] = "工作理念";
+  T.en["about.philosophy.1"] = "Data informs, it doesn't decide. The best campaigns balance sharp analytics with human intuition.";
+  T.zh["about.philosophy.1"] = "数据是参考，不是决策者。最好的 campaign，是锋利的分析与人的直觉之间的平衡。";
+  T.en["about.philosophy.2"] = "Culture is not an afterthought. It belongs in the brief, not the review.";
+  T.zh["about.philosophy.2"] = "文化不是后补的。它应该在 brief 里，而不是在审核里。";
+  T.en["about.philosophy.3"] = "Good process creates better creativity. Chaos doesn't scale — systems do.";
+  T.zh["about.philosophy.3"] = "好的流程创造更好的创意。混乱无法扩展——系统可以。";
+  T.en["about.philosophy.4"] = "Stay curious. The best ideas often show up when you're exploring something unrelated.";
+  T.zh["about.philosophy.4"] = "保持好奇。最好的想法，往往出现在你探索不相关事情的时候。";
+
+  // CAPABILITIES
+  T.en["cap.title"] = "What I Do";
+  T.zh["cap.title"] = "我能做什么";
+  T.en["cap.1.name"] = "IMC Strategy & Execution";
+  T.zh["cap.1.name"] = "整合营销策略与执行";
+  T.en["cap.1.desc"] = "End-to-end campaign planning, creative development, multi-channel rollout, and performance analysis. I've shipped 10+ product lines across 13 markets.";
+  T.zh["cap.1.desc"] = "端到端 campaign 规划、创意开发、多渠道发布和效果分析。我已经在 13 个市场交付了 10+ 条产品线。";
+  T.en["cap.2.name"] = "Cross-Cultural Localization";
+  T.zh["cap.2.name"] = "跨文化本地化";
+  T.en["cap.2.desc"] = "Creative brief adaptation, cultural compliance pre-screening, and regional aesthetic calibration. Built a reusable SOP for Muslim-market creative review.";
+  T.zh["cap.2.desc"] = "创意 brief 适配、文化合规预审、区域审美校准。为穆斯林市场创意审核建立了一套可复用的 SOP。";
+  T.en["cap.3.name"] = "Content Strategy & Production";
+  T.zh["cap.3.name"] = "内容策略与生产";
+  T.en["cap.3.desc"] = "Platform-native content strategies (TikTok, Instagram, YouTube). Led the pivot from long-form to short-form at OPPO, delivering 3× exposure growth.";
+  T.zh["cap.3.desc"] = "平台原生内容策略（TikTok、Instagram、YouTube）。在 OPPO 主导长视频向短视频转型，实现 3 倍曝光增长。";
+  T.en["cap.4.name"] = "Vendor & Stakeholder Management";
+  T.zh["cap.4.name"] = "供应商与利益相关方管理";
+  T.en["cap.4.desc"] = "Coordinating 6+ external agencies simultaneously. When vendors can't meet the bar, I know how to mobilize in-house resources to protect brand quality.";
+  T.zh["cap.4.desc"] = "同时协调 6+ 家外部代理商。当供应商无法达标时，我知道如何调动内部资源来保护品牌质量。";
+
+  // MAP
+  T.en["map.title"] = "Markets I've worked in";
+  T.zh["map.title"] = "我工作过的市场";
+  T.en["map.sea"] = "SEA";
+  T.zh["map.sea"] = "东南亚";
+  T.en["map.mea"] = "MEA";
+  T.zh["map.mea"] = "中东非";
+  T.en["map.latin"] = "LATAM";
+  T.zh["map.latin"] = "拉美";
+
+  // BRANDS
+  T.en["brands.title"] = "Brands I've worked with";
+  T.zh["brands.title"] = "合作品牌";
+  T.en["brands.1"] = "OPPO";
+  T.zh["brands.1"] = "OPPO";
+  T.en["brands.2"] = "NetEase Games";
+  T.zh["brands.2"] = "网易游戏";
+  T.en["brands.3"] = "Tencent Games";
+  T.zh["brands.3"] = "腾讯游戏";
+  T.en["brands.4"] = "MARVEL (ByteDance)";
+  T.zh["brands.4"] = "漫威（字节跳动）";
+
+  // CONTACT
+  T.en["contact.label"] = "Get in Touch";
+  T.zh["contact.label"] = "联系我";
+  T.en["contact.title"] = "Let's build something that travels.";
+  T.zh["contact.title"] = "让我们一起做点能走远路的东西。";
+  T.en["contact.body"] = "Whether it's a new product launch, a brand repositioning, or a market entry strategy — I'd love to hear what you're working on.";
+  T.zh["contact.body"] = "无论是新产品发布、品牌重塑，还是市场进入策略——我很想听听你在做什么。";
+  T.en["contact.email"] = "qian.daniella@gmail.com";
+  T.zh["contact.email"] = "qian.daniella@gmail.com";
+  T.en["contact.linkedin"] = "linkedin.com/in/danni-qian";
+  T.zh["contact.linkedin"] = "linkedin.com/in/danni-qian";
+  T.en["contact.location"] = "Shenzhen, China · Open to relocation";
+  T.zh["contact.location"] = "中国深圳 · 接受 relocation";
+  T.en["contact.btn1"] = "Download Resume (EN)";
+  T.zh["contact.btn1"] = "下载简历 (EN)";
+  T.en["contact.btn2"] = "下载简历 (中文)";
+  T.zh["contact.btn2"] = "下载简历 (中文)";
+  T.en["contact.langlabel"] = "Languages";
+  T.zh["contact.langlabel"] = "语言能力";
+  T.en["contact.langs"] = "Mandarin Chinese (Native) · English (Fluent, working language)";
+  T.zh["contact.langs"] = "中文（母语）· 英语（流利，工作语言）";
+  T.en["contact.toolslabel"] = "Tools I Use";
+  T.zh["contact.toolslabel"] = "使用工具";
+  T.en["contact.tools"] = "Adobe CC · Figma · Google Analytics 4 · Meta Ads · TikTok Ads · AI Tools (exploring)";
+  T.zh["contact.tools"] = "Adobe CC · Figma · Google Analytics 4 · Meta Ads · TikTok Ads · AI 工具（探索中）";
+
+  T.en["footer"] = "© 2026 钱丹丹 Daniella Qian · Built with intention.";
+  T.zh["footer"] = "© 2026 钱丹丹 Daniella Qian · 用心建造。";
+
+  // ─── LANGUAGE TOGGLE ───
+  var currentLang = 'en';
+
+  window.toggleLang = function() {
+    currentLang = currentLang === 'en' ? 'zh' : 'en';
+    applyLang(currentLang);
+    var btn = document.getElementById('langBtn');
+    btn.textContent = currentLang === 'en' ? 'EN · 中' : '中 · EN';
+    document.documentElement.lang = currentLang === 'en' ? 'en' : 'zh-CN';
+  };
+
+  function applyLang(lang) {
+    var elements = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < elements.length; i++) {
+      var key = elements[i].getAttribute('data-i18n');
+      var text = T[lang] && T[lang][key];
+      if (!text) continue;
+      // Handle <em> tags in title text
+      elements[i].innerHTML = text;
+    }
+  }
+
+  // ─── RESUME DOWNLOAD (placeholders) ───
+  window.downloadResume = function() {
+    var link = document.createElement('a');
+    link.href = 'resume-daniella-en.pdf'; // TODO: update with real file
+    link.download = 'Daniella_Qian_Resume_EN.pdf';
+    link.click();
+    setTimeout(function(){ alert('Resume download — please contact qian.daniella@gmail.com for the latest version.'); }, 100);
+  };
+
+  window.downloadResumeCN = function() {
+    alert('中文简历下载 — 请联系 qian.daniella@gmail.com 获取最新版本。');
+  };
+
+  // ─── MODAL ───
+  window.openModal = function(id) {
+    var el = document.getElementById('modal-' + id);
+    if (el) el.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeModal = function(id) {
+    var el = document.getElementById('modal-' + id);
+    if (el) el.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  // Close modal on overlay click
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal-overlay')) {
+      e.target.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Close modal on Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      var open = document.querySelector('.modal-overlay.active');
+      if (open) {
+        open.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+  });
+
+  // ─── PROJECT FILTERING ───
+  window.filterProjects = function(category, btn) {
+    var cards = document.querySelectorAll('.project-card');
+    cards.forEach(function(c) {
+      if (category === 'all' || c.getAttribute('data-category') === category) {
+        c.classList.remove('hidden');
+      } else {
+        c.classList.add('hidden');
+      }
+    });
+    var btns = document.querySelectorAll('.filter-btn');
+    btns.forEach(function(b) { b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+  };
+
+  // ─── SCROLL REVEAL ───
+  var reveals = document.querySelectorAll('.reveal');
+  function revealOnScroll() {
+    var windowH = window.innerHeight;
+    reveals.forEach(function(el) {
+      var top = el.getBoundingClientRect().top;
+      if (top < windowH - 60) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // initial check
+
+})();
+</script>
+
+</body>
+</html>
