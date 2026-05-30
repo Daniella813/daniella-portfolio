@@ -1,606 +1,400 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>钱丹丹 Daniella Qian — Portfolio Presentation</title>
+  <title>钱丹丹 Daniella Qian — IMC & Brand Portfolio</title>
 
-  <!-- reveal.js CDN -->
+  <!-- reveal.js -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/dracula.css">
+  <!-- D3 for map -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
   <style>
-    /* ─── 自定义样式 ─── */
+    /* ─── Hypershell 配色系统 ─── */
     :root {
-      --brand-warm: #C4A882;
-      --brand-dark: #2c2c2a;
-      --bg-warm: #f8f6f2;
+      --hs-green:    #0d9488;  /* 主绿色 — teal-600 */
+      --hs-green-d:  #0f766e;  /* 深绿 */
+      --hs-green-l:  #14b8a6;  /* 亮绿 */
+      --hs-dark:     #1a1a2e;  /* 深黑蓝 */
+      --hs-dark-2:   #16213e;  /* 次级暗色 */
+      --hs-light:    #f0fdfa;  /* 极浅绿白 */
+      --hs-cream:    #f8f6f2;  /* 暖白 */
+      --hs-gray:     #94a3b8;  /* 灰 */
+      --hs-accent:   #f59e0b;  /* 琥珀金 — 强调色 */
+      --font-cn: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+      --font-en: "Inter", "SF Pro Display", system-ui, sans-serif;
     }
 
-    .reveal {
-      font-family: "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
-    }
+    .reveal { font-family: var(--font-en), var(--font-cn); }
+    .reveal h1 { font-size:2.3em; font-weight:700; letter-spacing:-0.02em; color:var(--hs-dark); }
+    .reveal h2 { font-size:1.5em; font-weight:600; color:var(--hs-dark); border-bottom:3px solid var(--hs-green); display:inline-block; padding-bottom:0.25em; }
+    .reveal h3 { font-size:1.1em; font-weight:500; color:var(--hs-green-d); }
+    .reveal p, .reveal li { font-size:1em; line-height:1.7; color:#444; }
+    .reveal strong { color:var(--hs-dark); }
+    .reveal a { color:var(--hs-green-d); text-decoration:none; }
 
-    .reveal h1 {
-      font-size: 2.4em;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--brand-dark);
-    }
-
-    .reveal h2 {
-      font-size: 1.6em;
-      font-weight: 600;
-      color: var(--brand-dark);
-      border-bottom: 3px solid var(--brand-warm);
-      display: inline-block;
-      padding-bottom: 0.3em;
-    }
-
-    .reveal h3 {
-      font-size: 1.2em;
-      font-weight: 500;
-      color: var(--brand-warm);
-    }
-
-    .reveal p, .reveal li {
-      font-size: 1.05em;
-      line-height: 1.8;
-      color: #444;
-    }
-
-    .reveal strong {
-      color: var(--brand-dark);
-    }
-
-    .reveal ul {
-      text-align: left;
-      display: inline-block;
-    }
-
-    /* 封面页样式 */
+    /* ─── 组件 ─── */
     .cover-tag {
-      display: inline-block;
-      font-size: 0.85em;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--brand-warm);
-      border: 1px solid var(--brand-warm);
-      padding: 0.3em 1em;
-      border-radius: 20px;
-      margin-bottom: 1.5em;
+      display:inline-block; font-size:0.85em; letter-spacing:0.15em; text-transform:uppercase;
+      color:var(--hs-green); border:1px solid var(--hs-green); padding:0.3em 1.2em; border-radius:20px; margin-bottom:1.5em;
     }
+    .cover-role { font-size:1.1em; color:#666; margin-top:1em; }
 
-    .cover-role {
-      font-size: 1.1em;
-      color: #666;
-      margin-top: 1em;
-    }
-
-    /* 卡片 Grid */
-    .card-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2em;
-      margin-top: 1.5em;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.7);
-      border: 1px solid #e5e0d8;
-      border-radius: 12px;
-      padding: 1.2em 1.5em;
-      text-align: left;
-    }
-
-    .card .icon {
-      font-size: 1.5em;
-      margin-bottom: 0.5em;
-    }
-
-    .card h3 {
-      margin: 0 0 0.5em 0;
-      font-size: 1em;
-    }
-
-    .card p {
-      font-size: 0.9em;
-      color: #666;
-      margin: 0;
-    }
+    /* 卡片 */
+    .card-grid { display:grid; grid-template-columns:1fr 1fr; gap:1em; margin-top:1.2em; max-width:920px; margin-left:auto; margin-right:auto; }
+    .card-grid.col3 { grid-template-columns:1fr 1fr 1fr; }
+    .card { background:rgba(255,255,255,0.75); border:1px solid #ccfbf1; border-radius:12px; padding:1em 1.3em; text-align:left; }
+    .card .icon { font-size:1.4em; margin-bottom:0.4em; }
+    .card h3 { margin:0 0 0.4em; font-size:0.95em; color:var(--hs-green-d); }
+    .card p { font-size:0.85em; color:#555; margin:0; }
 
     /* 时间线 */
-    .timeline {
-      text-align: left;
-      max-width: 700px;
-      margin: 1.5em auto 0;
-      border-left: 2px solid var(--brand-warm);
-      padding-left: 1.5em;
-    }
+    .timeline { text-align:left; max-width:720px; margin:1.2em auto 0; border-left:2px solid var(--hs-green); padding-left:1.5em; }
+    .timeline-item { margin-bottom:1.2em; }
+    .timeline-year { font-size:0.82em; color:var(--hs-green-d); font-weight:600; }
+    .timeline-role { font-weight:600; color:var(--hs-dark); margin:0.15em 0; }
+    .timeline-desc { font-size:0.85em; color:#555; }
 
-    .timeline-item {
-      margin-bottom: 1.5em;
-    }
+    /* 数据 */
+    .stat-row { display:flex; justify-content:center; gap:3em; margin-top:1.8em; }
+    .stat { text-align:center; }
+    .stat-num { font-size:2.8em; font-weight:700; color:var(--hs-green); line-height:1; }
+    .stat-label { font-size:0.82em; color:var(--hs-gray); margin-top:0.3em; }
 
-    .timeline-year {
-      font-size: 0.85em;
-      color: var(--brand-warm);
-      font-weight: 600;
-      letter-spacing: 0.05em;
-    }
+    /* 品牌墙 */
+    .brand-wall { display:flex; flex-wrap:wrap; justify-content:center; gap:1.2em; margin-top:1.5em; }
+    .brand-item { background:rgba(255,255,255,0.85); border:1px solid #ccfbf1; border-radius:8px; padding:0.6em 1.2em; font-weight:600; color:var(--hs-dark); font-size:0.9em; }
 
-    .timeline-role {
-      font-weight: 600;
-      color: var(--brand-dark);
-      margin: 0.2em 0;
-    }
+    /* 引用 */
+    .quote { font-style:italic; color:#555; border-left:3px solid var(--hs-green); padding-left:1em; margin:1.2em auto; max-width:640px; text-align:left; font-size:0.92em; }
 
-    .timeline-desc {
-      font-size: 0.9em;
-      color: #666;
-    }
+    /* 标签 */
+    .skill-tags { display:flex; flex-wrap:wrap; justify-content:center; gap:0.5em; margin-top:1.2em; max-width:800px; margin-left:auto; margin-right:auto; }
+    .skill-tag { background:rgba(13,148,136,0.1); border:1px solid rgba(13,148,136,0.3); border-radius:20px; padding:0.35em 0.9em; font-size:0.8em; color:var(--hs-green-d); }
 
-    /* 数据高亮 */
-    .stat-row {
-      display: flex;
-      justify-content: center;
-      gap: 3em;
-      margin-top: 2em;
-    }
+    /* 对比表 */
+    .compare-table { width:100%; border-collapse:collapse; font-size:0.85em; text-align:left; margin-top:1em; }
+    .compare-table thead tr { border-bottom:2px solid var(--hs-green); }
+    .compare-table th { padding:0.5em 0.7em; color:var(--hs-green-d); font-weight:600; }
+    .compare-table td { padding:0.55em 0.7em; color:#555; border-bottom:1px solid #e5f2ef; }
 
-    .stat {
-      text-align: center;
-    }
+    /* 地图容器 */
+    .map-container { width:100%; max-width:900px; height:340px; margin:0 auto; position:relative; }
+    .map-container svg { width:100%; height:100%; }
 
-    .stat-num {
-      font-size: 3em;
-      font-weight: 700;
-      color: var(--brand-warm);
-      line-height: 1;
-    }
+    /* FAB 分析 */
+    .fab-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8em; max-width:900px; margin:1em auto 0; }
+    .fab-item { background:var(--hs-light); border-left:4px solid var(--hs-green); padding:0.7em 1em; text-align:left; border-radius:0 8px 8px 0; }
+    .fab-item .fab-label { font-size:0.75em; color:var(--hs-green-d); font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+    .fab-item .fab-text { font-size:0.85em; color:#444; margin-top:0.2em; }
 
-    .stat-label {
-      font-size: 0.85em;
-      color: #888;
-      margin-top: 0.3em;
-    }
+    /* 阶段卡片 */
+    .phase-card { background:var(--hs-light); border-radius:12px; padding:0.8em 1em; text-align:left; border:1px solid #ccfbf1; }
+    .phase-card .phase-month { font-size:0.85em; font-weight:700; color:var(--hs-green); margin-bottom:0.3em; }
+    .phase-card .phase-role { font-weight:600; color:var(--hs-dark); font-size:0.9em; }
+    .phase-card .phase-desc { font-size:0.82em; color:#555; margin-top:0.3em; }
 
-    /* 品牌 logo 墙 */
-    .brand-wall {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5em;
-      margin-top: 2em;
-    }
+    /* 细分人群 */
+    .seg-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.8em; max-width:920px; margin:1em auto 0; }
+    .seg-card { background:rgba(255,255,255,0.8); border-radius:10px; padding:0.7em; text-align:center; border-top:3px solid var(--hs-green); }
+    .seg-card .seg-icon { font-size:1.5em; margin-bottom:0.2em; }
+    .seg-card .seg-name { font-weight:700; font-size:0.85em; color:var(--hs-dark); }
+    .seg-card .seg-desc { font-size:0.75em; color:#777; margin-top:0.2em; }
 
-    .brand-item {
-      background: rgba(255,255,255,0.8);
-      border: 1px solid #e5e0d8;
-      border-radius: 8px;
-      padding: 0.8em 1.5em;
-      font-weight: 600;
-      color: var(--brand-dark);
-      font-size: 0.95em;
-    }
+    /* 结束页 */
+    .end-tagline { font-size:1.2em; color:var(--hs-green); margin:0.8em 0 0.3em; }
 
-    /* 结尾页 */
-    .end-tagline {
-      font-size: 1.3em;
-      color: var(--brand-warm);
-      margin: 1em 0 0.5em;
-    }
+    /* 图表容器 */
+    .chart-wrap { max-width:750px; margin:0 auto; }
+    .chart-wrap canvas { width:100% !important; height:280px !important; }
 
-    .end-contact {
-      font-size: 0.95em;
-      color: #888;
-      margin-top: 1.5em;
-    }
-
-    .end-contact a {
-      color: var(--brand-dark);
-      text-decoration: none;
-      border-bottom: 1px solid var(--brand-warm);
-    }
-
-    /* 引用块 */
-    .quote {
-      font-style: italic;
-      color: #666;
-      border-left: 3px solid var(--brand-warm);
-      padding-left: 1em;
-      margin: 1.5em auto;
-      max-width: 600px;
-      text-align: left;
-      font-size: 0.95em;
-    }
-
-    /* 技能标签 */
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.6em;
-      margin-top: 1.5em;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .skill-tag {
-      background: rgba(196,168,130,0.15);
-      border: 1px solid rgba(196,168,130,0.4);
-      border-radius: 20px;
-      padding: 0.4em 1em;
-      font-size: 0.85em;
-      color: var(--brand-dark);
-    }
+    /* fragment 动效 */
+    .fragment.fade-in-then-semi-out { opacity:1; visibility:inherit; }
+    .fragment.fade-in-then-semi-out.visible { opacity:1; }
   </style>
 </head>
 
 <body>
 <div class="reveal">
-  <div class="slides">
+<div class="slides">
 
-    <!-- ═══════════════════════════════════════════
-      SLIDE 1 — 封面
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <p class="cover-tag">IMC & Brand Strategy</p>
-      <h1>钱丹丹<br><span style="font-size:0.6em; color:#888; font-weight:400;">Daniella Qian</span></h1>
-      <p class="cover-role">Integrated Marketing Communications · 8 Years · 13 Markets</p>
-      <p style="margin-top:2em; font-size:0.9em; color:#aaa;">按 <strong style="color:#888;">→</strong> 键或空格键继续</p>
-    </section>
+<!-- ═══════════════════════════════════════════
+  PART 1: 我是谁（6 pages）
+  ═══════════════════════════════════════════ -->
 
+<!-- SLIDE 1 — 封面 -->
+<section data-background-color="var(--hs-cream)">
+  <p class="cover-tag">IMC & Brand Strategy</p>
+  <h1>钱丹丹<br><span style="font-size:0.55em; color:#888; font-weight:400;">Daniella Qian</span></h1>
+  <p class="cover-role">Integrated Marketing · Brand Building · 8 Years · 13 Markets</p>
+  <p style="margin-top:2em; font-size:0.85em; color:#aaa;">按 <strong style="color:#888;">→</strong> 继续</p>
+</section>
 
-    <!-- ═══════════════════════════════════════════
-      SLIDE 2 — 关于我
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <h2>关于我</h2>
-      <p style="max-width:650px; margin:1.5em auto; font-size:1.05em; line-height:2;">
-        我是一位<strong>整合营销传播（IMC）从业者</strong>，
-        过去 8 年专注于<strong>消费科技品牌</strong>的全球 launch 与本地化落地。
-      </p>
-      <div class="quote">
-        "从电视编导到全球科技品牌——我的职业路径始终围绕一个核心：用有说服力的叙事，连接产品与人心。"
-      </div>
-      <div class="stat-row">
-        <div class="stat">
-          <div class="stat-num">8</div>
-          <div class="stat-label">年经验</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">13</div>
-          <div class="stat-label">海外市场</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">5+</div>
-          <div class="stat-label">产品系列 launch</div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════
-      SLIDE 3 — 核心能力
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <h2>核心能力</h2>
-      <div class="card-grid">
-        <div class="card">
-          <div class="icon">🌐</div>
-          <h3>Global IMC Strategy</h3>
-          <p>统筹全球一体化传播策略，适配区域文化差异，确保品牌 voice 一致性</p>
-        </div>
-        <div class="card">
-          <div class="icon">🎬</div>
-          <h3>Creative Production</h3>
-          <p>端到端管理创意制作，从 brief 到交付，协调内部团队与外部代理商</p>
-        </div>
-        <div class="card">
-          <div class="icon">📊</div>
-          <h3>Market Insights</h3>
-          <p>通过一线门店调研与用户访谈，提炼可落地的市场洞察，反哺产品与传播策略</p>
-        </div>
-        <div class="card">
-          <div class="icon">🤝</div>
-          <h3>Cross-functional Leadership</h3>
-          <p>协调销售、产品、设计、PR 等多部门，推动复杂项目从策略到执行</p>
-        </div>
-      </div>
-      <div class="skill-tags" style="margin-top:2em;">
-        <span class="skill-tag">Adobe CC</span>
-        <span class="skill-tag">Figma</span>
-        <span class="skill-tag">Google Analytics 4</span>
-        <span class="skill-tag">Meta Ads</span>
-        <span class="skill-tag">TikTok Ads</span>
-        <span class="skill-tag">AI Tools (exploring)</span>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════
-      SLIDE 4 — 职业时间线
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <h2>职业旅程</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-year">2016 — 电视制作</div>
-          <div class="timeline-role">内容编导 · 深圳广播电视集团</div>
-          <div class="timeline-desc">学会讲故事和现场制作，每一帧都需要赢得观众注意力——这个教训至今仍在塑造我的品牌传播方式。</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2018 — 创意代理商</div>
-          <div class="timeline-role">资深项目经理 · 深圳点维文化</div>
-          <div class="timeline-desc">为头部游戏客户（网易、腾讯）管理端到端广告制作，建立优质创意供应商网络。</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2021 — 全球游戏</div>
-          <div class="timeline-role">IMC · 字节跳动朝夕光年</div>
-          <div class="timeline-desc">负责 MARVEL 等 IP 的全球化营销，统筹跨时区团队协作。</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2022 — 至今</div>
-          <div class="timeline-role">资深创意项目经理 · OPPO</div>
-          <div class="timeline-desc">主导 Find X8 全球 IMC，覆盖 13 个海外市场，完成从策略到执行的全链路管理。</div>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════
-      SLIDE 5 — 重点案例：Find X8 全球 launch
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <h2>重点案例：Find X8 全球 IMC</h2>
-      <h3 style="font-weight:400; color:#888; font-size:1em;">OPPO · Project 2024–2025（在职期间主导项目）</h3>
-
-      <div class="card-grid" style="margin-top:2em;">
-        <div class="card">
-          <h3>Challenge 挑战</h3>
-          <p>旗舰产品在全球 13 个市场同步 launch，需在保持品牌一致性的同时适配各地文化与渠道差异。</p>
-        </div>
-        <div class="card">
-          <h3>Approach 方法</h3>
-          <p>深入泰国、新加坡市场一线调研，访谈用户与零售商，基于真实洞察定制区域传播物料。</p>
-        </div>
-        <div class="card">
-          <h3>Execution 执行</h3>
-          <p>统筹全球创意代理商 + 区域本地团队，2–3 周完成视觉系统开发与落地，大幅缩短交付周期。</p>
-        </div>
-        <div class="card">
-          <h3>Result 成果</h3>
-          <p>区域文化适配零失误，欧美市场短视频完播率提升，内容策略从长视频成功转型短视频。</p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════
-      SLIDE 6 — 合作品牌
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <h2>合作品牌</h2>
-      <p style="color:#888; max-width:600px; margin:0 auto 1em;">
-        过去 8 年，有幸与这些品牌并肩工作
-      </p>
-      <div class="brand-wall">
-        <div class="brand-item">OPPO</div>
-        <div class="brand-item">OnePlus</div>
-        <div class="brand-item">网易游戏</div>
-        <div class="brand-item">腾讯游戏</div>
-        <div class="brand-item">MARVEL（字节跳动）</div>
-        <div class="brand-item">深圳卫视</div>
-      </div>
-
-      <div style="margin-top:3em;">
-        <h3 style="font-size:1em; color:#aaa;">市场覆盖</h3>
-        <p style="font-size:0.95em; color:#888; max-width:700px; margin:0.5em auto;">
-          中国 · 泰国 · 新加坡 · 印尼 · 马来西亚 · 越南 · 菲律宾 · 印度 · 中东非（MEA）· 欧洲部分市场
-        </p>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════
-      SLIDE 7 — Hypershell：我为什么想加入
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <p class="cover-tag" style="margin-bottom:1em;">Brand Strategy Proposal</p>
-      <h2 style="border:none; display:block;">如果我加入 Hypershell，<br>第一件事是这个</h2>
-      <div class="quote" style="max-width:760px; margin-top:1.5em;">
-        "消费级外骨骼正站在一个临界点上——早期用户已验证，大众市场的门还没打开。<br>
-        Hypershell 现在最需要的，不是更多流量，而是<strong>信任建立</strong>和<strong>品类认知教育</strong>。"
-      </div>
-      <div class="stat-row" style="margin-top:2em;">
-        <div class="stat">
-          <div class="stat-num" style="font-size:2em;">$1M+</div>
-          <div class="stat-label">Kickstarter 众筹金额</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" style="font-size:2em;">70+</div>
-          <div class="stat-label">国家已有销售</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" style="font-size:2em; color:#e07b54;">⚠</div>
-          <div class="stat-label">大众市场信任缺口</div>
-        </div>
-      </div>
-      <p style="margin-top:1.5em; font-size:0.85em; color:#aaa;">数据来源：Kickstarter 公开页 · 36氪 · 腾讯新闻报道</p>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════
-      SLIDE 8 — 核心判断：问题在哪
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <h2>我做了三件事，发现了同一个问题</h2>
-      <div class="card-grid" style="margin-top:1.5em; grid-template-columns: 1fr 1fr 1fr;">
-        <div class="card">
-          <div class="icon">🔍</div>
-          <h3>官网内容审计</h3>
-          <p>产品页以技术参数为主，"穿上它你能做什么"的场景叙述几乎缺失。用户旅程直接从参数跳到购买页，中间少了关键说服环节。</p>
-        </div>
-        <div class="card">
-          <div class="icon">📱</div>
-          <h3>社媒基准对比</h3>
-          <p>TikTok / Instagram 自发 UGC 内容极少；<code>#TakeLifeInStride</code> 话题声量几乎为零。官方内容占比 >85%，与 GoPro（官方仅 5%）形成鲜明对比。</p>
-        </div>
-        <div class="card">
-          <div class="icon">💬</div>
-          <h3>用户评论分析</h3>
-          <p>"Is this only for people with mobility issues?"<br>"$1000+ is a lot for something I don't understand."<br><br>品类认知错位 + 信任证据不足。</p>
-        </div>
-      </div>
-      <div class="quote" style="margin-top:2em; max-width:800px;">
-        核心问题归纳：<strong>品类认知错位 × 信任证据不足 × 场景想象力缺失</strong>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════
-      SLIDE 9 — 四大战略支柱
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <h2>四大战略支柱</h2>
-      <p style="color:#888; font-size:0.95em; max-width:700px; margin:0.5em auto 1.5em;">核心方向：把"助力"从功能描述，转化为"生活自由度"的情感主张</p>
-      <div class="card-grid">
-        <div class="card">
-          <div class="icon">🎬</div>
-          <h3>支柱 1 · 品类教育 → 场景共鸣</h3>
-          <p>从"什么是外骨骼"转向"穿上它你能做什么"。以"The 20km Test"系列短视频为核心，用真实用户故事替代功能介绍。</p>
-        </div>
-        <div class="card">
-          <div class="icon">🌱</div>
-          <h3>支柱 2 · 社媒从零到一 → 社区驱动</h3>
-          <p>推出"Real Steps"UGC 挑战赛，建立 KOC 四级合作模型（Mega / Macro / Micro / Nano），目标：自发内容占比从 <15% 提升到 >50%。</p>
-        </div>
-        <div class="card">
-          <div class="icon">💡</div>
-          <h3>支柱 3 · Product-Led → Brand-Led</h3>
-          <p>保留 "Take Life in Stride" 主口号，增加分人群支撑叙事：徒步者、创作者、银发族、城市探索者各一套 Messaging。</p>
-        </div>
-        <div class="card">
-          <div class="icon">🤝</div>
-          <h3>支柱 4 · 破圈合作 → 文化借力</h3>
-          <p>与 Patagonia / The North Face 联名，打破"硬核装备"圈层认知；合作 REI/Decathlon 设置线下试穿体验站。</p>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════
-      SLIDE 10 — 90 天落地路线图
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <h2>90 天落地路线图</h2>
-      <div class="timeline" style="margin-top:1.5em;">
-        <div class="timeline-item">
-          <div class="timeline-year">Month 1 · 基础建设</div>
-          <div class="timeline-role">Audit & Setup</div>
-          <div class="timeline-desc">社媒现状审计 + 竞品基准分析；深度访谈 15 位用户（现有 10 + 潜在 5）；内容生产 SOP 搭建；"Real Steps" 挑战赛策划完成。</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">Month 2 · 声量启动</div>
-          <div class="timeline-role">Launch & Amplify</div>
-          <div class="timeline-desc">签约首批 5 位 Macro KOC；"Real Steps" 挑战赛上线；3-5 条 YouTube 深度测评发布；官网"场景化"页面改版上线。</div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">Month 3 · 优化与扩展</div>
-          <div class="timeline-role">Optimize & Expand</div>
-          <div class="timeline-desc">全渠道 60 天数据复盘，优化内容方向；REI / Decathlon 线下试穿活动策划；Phase 2 联名合作 + 极地赞助方案确定。</div>
-        </div>
-      </div>
-      <div style="margin-top:1.5em; text-align:center;">
-        <span class="skill-tag" style="font-size:0.9em;">社媒互动率目标 >3%</span>
-        <span class="skill-tag" style="font-size:0.9em;">官网流量 +50%</span>
-        <span class="skill-tag" style="font-size:0.9em;">UGC 自发内容 >50%</span>
-        <span class="skill-tag" style="font-size:0.9em;">KOC ROI 1:4+</span>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════
-      SLIDE 11 — 为什么是我
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <h2>为什么是我</h2>
-      <p style="color:#888; font-size:0.95em; max-width:650px; margin:0.5em auto 1.5em;">Hypershell 面临的挑战，我在 OPPO 已经解决过</p>
-      <div style="max-width:900px; margin:0 auto;">
-        <table style="width:100%; border-collapse:collapse; font-size:0.88em; text-align:left;">
-          <thead>
-            <tr style="border-bottom:2px solid var(--brand-warm);">
-              <th style="padding:0.6em 0.8em; color:var(--brand-warm); font-weight:600;">Hypershell 的挑战</th>
-              <th style="padding:0.6em 0.8em; color:var(--brand-warm); font-weight:600;">我在 OPPO 的做法</th>
-              <th style="padding:0.6em 0.8em; color:var(--brand-warm); font-weight:600;">说明了什么</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom:1px solid #e5e0d8;">
-              <td style="padding:0.7em 0.8em; color:#555;">品类新，用户不知道自己需要</td>
-              <td style="padding:0.7em 0.8em; color:#555;">用"AI 长焦"场景化短视频，让功能可被瞬间感知</td>
-              <td style="padding:0.7em 0.8em; color:#333; font-weight:500;">能把"没人知道"变成"大家想要"</td>
-            </tr>
-            <tr style="border-bottom:1px solid #e5e0d8;">
-              <td style="padding:0.7em 0.8em; color:#555;">专业圈层 → 大众市场</td>
-              <td style="padding:0.7em 0.8em; color:#555;">泰国/新加坡差异化策略，旗舰延伸到大众消费者</td>
-              <td style="padding:0.7em 0.8em; color:#333; font-weight:500;">知道"破圈"的桥怎么搭</td>
-            </tr>
-            <tr style="border-bottom:1px solid #e5e0d8;">
-              <td style="padding:0.7em 0.8em; color:#555;">社媒声量从零到一</td>
-              <td style="padding:0.7em 0.8em; color:#555;">TikTok 曝光量增长 3 倍，官方互动突破 200 万</td>
-              <td style="padding:0.7em 0.8em; color:#333; font-weight:500;">不是懂理论的人，是真做过的人</td>
-            </tr>
-            <tr>
-              <td style="padding:0.7em 0.8em; color:#555;">欧美市场文化适配</td>
-              <td style="padding:0.7em 0.8em; color:#555;">中东非市场"文化前筛"机制，适配零失误</td>
-              <td style="padding:0.7em 0.8em; color:#333; font-weight:500;">欧美市场是已验证的能力</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════
-      SLIDE 12 — 联系我
-      ═══════════════════════════════════════════ -->
-    <section data-background-color="#f8f6f2">
-      <h1 style="font-size:2em;">一起做点<br>经得住时间的事</h1>
-      <div class="end-tagline">
-        新产品上市、品牌焕新、或者开拓新市场——聊聊你在做的事。
-      </div>
-      <div style="margin-top:2.5em; font-size:1em;">
-        <p style="margin:0.5em 0;">
-          📧 <a href="mailto:578632101@qq.com">578632101@qq.com</a>
-        </p>
-        <p style="margin:0.5em 0;">
-          🔗 <a href="https://www.linkedin.com/in/qian-daniella-2a04a785/" target="_blank">linkedin.com/in/qian-daniella</a>
-        </p>
-        <p style="margin:0.5em 0;">
-          🌐 <a href="https://daniella813.github.io/daniella-portfolio/" target="_blank">daniella813.github.io/portfolio</a>
-        </p>
-      </div>
-      <p style="margin-top:3em; font-size:0.8em; color:#ccc;">© 2026 钱丹丹 Daniella Qian</p>
-    </section>
-
+<!-- SLIDE 2 — 关于我 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>关于我</h2>
+  <p style="max-width:650px; margin:1.2em auto; font-size:1em; line-height:2;">
+    8 年<strong>消费科技品牌</strong>经验，专注于<strong>全球产品 launch</strong>与<strong>本地化品牌建设</strong>。
+    从电视编导到 OPPO 全球 IMC 负责人，一条始终围绕"叙事"的职业路径。
+  </p>
+  <div class="quote">
+    "从故事到游戏，再到科技。一条越走越宽的路。"
   </div>
-</div>
+  <div class="stat-row">
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">年经验</div></div>
+    <div class="stat"><div class="stat-num">13</div><div class="stat-label">海外市场</div></div>
+    <div class="stat"><div class="stat-num">5+</div><div class="stat-label">产品系列 launch</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 3 — 核心能力 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>核心能力</h2>
+  <div class="card-grid">
+    <div class="card"><div class="icon">🌐</div><h3>Global IMC Strategy</h3><p>统筹全球一体化传播策略，适配区域文化差异，确保品牌 voice 一致性</p></div>
+    <div class="card"><div class="icon">🏗️</div><h3>Brand Building</h3><p>从品牌定位到视觉体系搭建，构建从 0 到 1 的品牌资产</p></div>
+    <div class="card"><div class="icon">🎬</div><h3>Creative Production</h3><p>端到端管理创意制作，从 brief 到交付，2-3 周完成视觉系统开发</p></div>
+    <div class="card"><div class="icon">📊</div><h3>Market Insights</h3><p>一线门店调研 + 用户访谈，提炼可落地的市场洞察，反哺策略</p></div>
+  </div>
+  <div class="skill-tags" style="margin-top:1.5em;">
+    <span class="skill-tag">Adobe CC</span><span class="skill-tag">Figma</span><span class="skill-tag">Google Analytics 4</span>
+    <span class="skill-tag">Content Strategy</span><span class="skill-tag">Social Media</span><span class="skill-tag">KOL/KOC</span>
+    <span class="skill-tag">英语流利</span><span class="skill-tag">AI 工具探索（学习中）</span>
+  </div>
+</section>
+
+<!-- SLIDE 4 — 职业旅程 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>职业旅程</h2>
+  <div class="timeline">
+    <div class="timeline-item"><div class="timeline-year">2016 — 电视制作</div><div class="timeline-role">内容编导 · 深圳广播电视集团</div><div class="timeline-desc">学会讲故事和现场制作，每一帧都需要赢得观众注意力——这个教训至今仍在塑造我的品牌传播方式。</div></div>
+    <div class="timeline-item"><div class="timeline-year">2018 — 创意代理商</div><div class="timeline-role">资深项目经理 · 深圳点维文化</div><div class="timeline-desc">为头部游戏客户（网易、腾讯）管理端到端广告制作，建立优质创意供应商网络。</div></div>
+    <div class="timeline-item"><div class="timeline-year">2021 — 全球游戏</div><div class="timeline-role">IMC · 字节跳动朝夕光年</div><div class="timeline-desc">负责 MARVEL 等 IP 的全球化营销，统筹跨时区团队协作。</div></div>
+    <div class="timeline-item"><div class="timeline-year">2022 — 至今</div><div class="timeline-role">资深创意项目经理 · OPPO</div><div class="timeline-desc">主导 Find X8 全球 IMC，覆盖 13 个海外市场，完成从策略到执行的全链路管理。</div></div>
+  </div>
+</section>
+
+<!-- SLIDE 5 — 重点案例 Find X8 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>重点案例：Find X8 全球 IMC</h2>
+  <h3 style="font-weight:400; color:#888; font-size:0.9em;">OPPO · Project 2024–2025（在职期间主导项目）</h3>
+  <div class="card-grid" style="margin-top:1.5em;">
+    <div class="card"><h3>Challenge 挑战</h3><p>产品在全球 13 个市场同步 launch，需在保持品牌一致性的同时适配各地文化与渠道差异。</p></div>
+    <div class="card"><h3>Approach 方法</h3><p>深入泰国、新加坡市场一线调研，访谈用户与零售商，基于真实洞察定制区域传播物料。</p></div>
+    <div class="card"><h3>Execution 执行</h3><p>统筹全球创意代理商 + 区域本地团队，2-3 周完成视觉系统开发与落地，大幅缩短交付周期。</p></div>
+    <div class="card"><h3>Result 成果</h3><p>区域文化适配零失误，欧美市场短视频完播率提升，内容策略从长视频成功转型短视频。</p></div>
+  </div>
+</section>
+
+<!-- SLIDE 6 — 合作品牌 + 市场覆盖地图 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>合作品牌 & 市场覆盖</h2>
+  <div class="brand-wall">
+    <div class="brand-item">OPPO</div><div class="brand-item">OnePlus</div><div class="brand-item">网易游戏</div>
+    <div class="brand-item">腾讯游戏</div><div class="brand-item">MARVEL</div><div class="brand-item">深圳卫视</div>
+  </div>
+  <div style="margin-top:1.2em;">
+    <div id="market-map" class="map-container"></div>
+  </div>
+  <p style="font-size:0.78em; color:#aaa; margin-top:0.5em;">
+    中国 · 泰国 · 新加坡 · 印尼 · 马来西亚 · 越南 · 菲律宾 · 印度 · 中东非（MEA）· 欧洲部分市场
+  </p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  PART 2: Hypershell 策略提案（6 pages）
+  ═══════════════════════════════════════════ -->
+
+<!-- SLIDE 7 — 为什么 Hypershell -->
+<section data-background-color="var(--hs-cream)">
+  <p class="cover-tag">Brand Strategy Proposal</p>
+  <h2 style="border:none; display:block;">如果我加入 Hypershell，<br>第一件事是这个</h2>
+  <div class="quote" style="max-width:760px;">
+    "消费级外骨骼正站在一个临界点上——<strong>早期用户已验证，大众市场的门还没打开</strong>。<br>
+    Hypershell 现在最需要的，不是更多流量，而是<strong>信任建立</strong>和<strong>品类认知教育</strong>。"
+  </div>
+  <div class="stat-row">
+    <div class="stat"><div class="stat-num">$1M+</div><div class="stat-label">Kickstarter 众筹</div></div>
+    <div class="stat"><div class="stat-num">70+</div><div class="stat-label">国家已有销售</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--hs-accent);">⚠</div><div class="stat-label">大众市场信任缺口</div></div>
+  </div>
+  <p style="margin-top:1em; font-size:0.75em; color:#aaa;">数据来源：Kickstarter 公开页 · 36氪 · 腾讯新闻</p>
+</section>
+
+<!-- SLIDE 8 — 传播策略诊断 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>传播策略诊断：三个认知断层</h2>
+  <p style="color:#888; font-size:0.9em; margin-bottom:1em;">Hypershell 当前传播的核心问题：技术硬核，但消费者无感</p>
+  <div class="card-grid col3">
+    <div class="card"><div class="icon">🔬</div><h3>断层 1：术语 vs 生活</h3><p>45Nm 扭矩、自适应算法——工程语言无法唤起购买欲望。需要把"扭矩"翻译成"托起你背包的第三只手"。</p></div>
+    <div class="card"><div class="icon">👥</div><h3>断层 2：小众 vs 大众</h3><p>当前内容面向户外极客，缺少让普通人"想象自己也能用"的场景叙事。<code>#TakeLifeInStride</code> 话题声量几乎为零。</p></div>
+    <div class="card"><div class="icon">💰</div><h3>断层 3：参数 vs 价值</h3><p>$999-$1,999 的定价需要"价值可视化"。物理治疗费 $200/次、健身房年费——用替代成本重构价格认知。</p></div>
+  </div>
+  <div class="quote" style="margin-top:1.2em; max-width:800px;">
+    核心公式：<strong>技术消费化 = 场景翻译 → 痛点狙击 → 社交货币</strong>
+  </div>
+</section>
+
+<!-- SLIDE 9 — 四大战略支柱（修复显示） -->
+<section data-background-color="var(--hs-cream)">
+  <h2>四大战略支柱</h2>
+  <p style="color:#888; font-size:0.9em; max-width:700px; margin:0.3em auto 0.8em;">核心方向：把"助力"从功能描述，转化为"生活自由度"的情感主张</p>
+  <div class="card-grid">
+    <div class="card"><div class="icon">🎬</div><h3>支柱 1 · 品类教育 → 场景共鸣</h3><p>从"什么是外骨骼"转向"穿上它你能做什么"。以"The 20km Test"系列短视频为核心，用真实用户故事替代功能介绍。</p></div>
+    <div class="card"><div class="icon">🌱</div><h3>支柱 2 · 社媒从零到一 → 社区驱动</h3><p>推出"Real Steps"UGC 挑战赛，建立 KOC 四级合作模型（Mega/Macro/Micro/Nano），目标：自发内容占比从 &lt;15% 到 &gt;50%。</p></div>
+    <div class="card"><div class="icon">💡</div><h3>支柱 3 · Product-Led → Brand-Led</h3><p>保留 "Take Life in Stride" 主口号，增加分人群支撑叙事：徒步者、创作者、银发族、城市探索者各一套 Messaging。</p></div>
+    <div class="card"><div class="icon">🤝</div><h3>支柱 4 · 破圈合作 → 文化借力</h3><p>与 Patagonia / The North Face 联名，打破"硬核装备"圈层认知；合作 REI/Decathlon 设置线下试穿体验站。</p></div>
+  </div>
+</section>
+
+<!-- SLIDE 10 — 90 天路线图 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>90 天落地路线图</h2>
+  <div class="timeline" style="margin-top:1em;">
+    <div class="timeline-item"><div class="timeline-year">Month 1 · 基础建设</div><div class="timeline-role">Audit & Setup</div><div class="timeline-desc">社媒现状审计 + 竞品基准分析；深度访谈 15 位用户（现有 10 + 潜在 5）；内容生产 SOP 搭建；"Real Steps" 挑战赛策划完成。</div></div>
+    <div class="timeline-item"><div class="timeline-year">Month 2 · 声量启动</div><div class="timeline-role">Launch & Amplify</div><div class="timeline-desc">签约首批 5 位 Macro KOC；"Real Steps" 挑战赛上线；3-5 条 YouTube 深度测评发布；官网"场景化"页面改版上线。</div></div>
+    <div class="timeline-item"><div class="timeline-year">Month 3 · 优化与扩展</div><div class="timeline-role">Optimize & Expand</div><div class="timeline-desc">全渠道 60 天数据复盘，优化内容方向；REI / Decathlon 线下试穿活动策划；Phase 2 联名合作 + 极地赞助方案确定。</div></div>
+  </div>
+  <div style="margin-top:1.2em; text-align:center;">
+    <span class="skill-tag">社媒互动率 &gt;3%</span><span class="skill-tag">官网流量 +50%</span><span class="skill-tag">UGC 自发 &gt;50%</span><span class="skill-tag">KOC ROI 1:4+</span>
+  </div>
+</section>
+
+<!-- SLIDE 11 — 产品 FAB 分析 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>产品内核：FAB 分析</h2>
+  <p style="color:#888; font-size:0.85em; margin-bottom:0.8em;">Feature → Advantage → Benefit：把工程语言转化为用户可感知的价值</p>
+  <div class="fab-grid">
+    <div class="fab-item"><span class="fab-label">Feature</span><div class="fab-text">峰值扭矩 45Nm · 自适应动力输出</div><span class="fab-label">Benefit</span><div class="fab-text">陡坡负重如履平地，减少 70% 膝关节损伤风险</div></div>
+    <div class="fab-item"><span class="fab-label">Feature</span><div class="fab-text">钛合金脊柱支架 · 仅重 1.2kg</div><span class="fab-label">Benefit</span><div class="fab-text">长途徒步无负重感，提升 20% 行进效率</div></div>
+    <div class="fab-item"><span class="fab-label">Feature</span><div class="fab-text">地形预判 AI · 10 万组步态数据训练</div><span class="fab-label">Benefit</span><div class="fab-text">比人脑快 0.3 秒识别坡度变化，避免突发拉伤</div></div>
+    <div class="fab-item"><span class="fab-label">Feature</span><div class="fab-text">8 小时续航 + 快充 30 分钟达 50%</div><span class="fab-label">Benefit</span><div class="fab-text">单日极限户外无需携带充电宝，减负 500g</div></div>
+  </div>
+  <div class="quote" style="margin-top:1em;">价格锚点公式：<strong>用户总收益 = 医疗费节省($2000/年) + 装备减重($300) + 创作收益($500) − 产品($999) = +$1801/年</strong></div>
+</section>
+
+<!-- SLIDE 12 — 传播策略：四季渗透 + 三案例 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>传播节奏：四季渗透 + 案例参考</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.8em; max-width:900px; margin:0.8em auto 0;">
+    <div class="phase-card"><div class="phase-month">Q1 · 种子破冰</div><div class="phase-role">百人众测 + UGC 素材积累</div><div class="phase-desc">招募户外垂类 KOC，签订真实内容协议；#外骨骼拯救计划 征集运动损伤用户故事。目标：UGC 视频 ≥30 条</div></div>
+    <div class="phase-card"><div class="phase-month">Q2 · 品类定义</div><div class="phase-role">场景占位 + 超级符号</div><div class="phase-desc">#不服山计划 挑战赛 + B 站纪录片《钢铁脊梁》+ 国家登山步道快闪站。目标：场景内容占比 35%+</div></div>
+    <div class="phase-card"><div class="phase-month">Q3 · 口碑裂变</div><div class="phase-role">社交货币 + 生态配件</div><div class="phase-desc">磁吸拓展坞上市 + 用户《户外战斗力报告》+ 露营联名轻量化套装。目标：配件销售占比 &gt;12%</div></div>
+    <div class="phase-card"><div class="phase-month">Q4 · 文化收割</div><div class="phase-role">生活方式绑定</div><div class="phase-desc">城市废墟探索赛事 + 山系设计师联名 + 年度移动进化颁奖礼。目标：品牌搜索量 +150%</div></div>
+  </div>
+  <p style="margin-top:1em; font-size:0.82em; color:var(--hs-green-d);"><strong>可借鉴案例：</strong>Shokz（场景定义 → 重度场景占领） · Oura Ring（数据游戏化 → 社交货币） · Insta360（技术优势可视化 → 病毒传播）</p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  PART 3: Branding 专题（3 pages）
+  ═══════════════════════════════════════════ -->
+
+<!-- SLIDE 13 — Branding：五大细分人群 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>Branding：五大细分市场战略</h2>
+  <p style="color:#888; font-size:0.85em; margin-bottom:0.8em;">「一核五维，星群扩张」——初期以 1-2 个主星切入，逐步形成品牌生态星群</p>
+  <div class="seg-grid">
+    <div class="seg-card"><div class="seg-icon">🦿</div><div class="seg-name">机能复兴者</div><div class="seg-desc">运动康复 & 银发户外<br>核心 slogan："步履重生，自在我行"<br>产品：Hypershell Lite</div></div>
+    <div class="seg-card"><div class="seg-icon">⛰️</div><div class="seg-name">极限突破者</div><div class="seg-desc">硬核探险 & 专业户外<br>核心 slogan："地心引力，就此挣脱"<br>产品：Hypershell Pro</div></div>
+    <div class="seg-card"><div class="seg-icon">🕶️</div><div class="seg-name">潮流先锋者</div><div class="seg-desc">山系文化 & 都市机能<br>核心 slogan："装备，即风格"<br>产品：Hypershell Origin</div></div>
+    <div class="seg-card"><div class="seg-icon">📸</div><div class="seg-name">创作捕手</div><div class="seg-desc">户外内容创作者<br>核心 slogan："Move, Capture, Create."<br>产品：Creator Kit</div></div>
+    <div class="seg-card"><div class="seg-icon">🏗️</div><div class="seg-name">效能进化者</div><div class="seg-desc">物流、建造、警务 B2C2E<br>核心 slogan："赋能增效，关怀无声"<br>产品：Industrial 版</div></div>
+  </div>
+  <p style="margin-top:0.8em; font-size:0.78em; color:#aaa;">中国市场重「情感牵引 + 潮流破圈」；欧美市场重「性能征服 + 生态锁定」</p>
+</section>
+
+<!-- SLIDE 14 — Branding：品牌符号系统 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>Branding：品牌符号体系构建</h2>
+  <p style="color:#888; font-size:0.85em; margin-bottom:1em;">"第二跟腱"定位的三维落地：语言 × 视觉 × 体验</p>
+  <div class="card-grid">
+    <div class="card"><div class="icon">💬</div><h3>语言系统</h3><p>核心话术："Hypershell 是你身体的第 207 块骨头" · "当跟腱说放弃时，你的第二跟腱刚刚激活"<br><br>❌ 禁用"外骨骼"（暗示非人体原生）<br>✅ 多用"增强""延伸""进化"</p></div>
+    <div class="card"><div class="icon">✨</div><h3>视觉符号</h3><p>动态蓝光脊柱条：产品运行时自动发光（夜间识别率 ↑3 倍）<br><br>IP 形象：机械脊柱精灵 "HYPER"，出现在故障提示/教程中<br><br>注册专利后开放第三方配件授权</p></div>
+    <div class="card"><div class="icon">🎁</div><h3>体验设计</h3><p>开箱仪式：包装展开成人体脊柱形状<br>首次启动：手机 APP 扫描背部生成"跟腱强度报告"<br>故障反馈：语音提示"第二跟腱正在重启"替代"系统错误"</p></div>
+    <div class="card"><div class="icon">🌍</div><h3>海外适配</h3><p>北美 slogan："Human 2.0, Capture The Wild"<br>欧洲 slogan："Your Body Upgrades When Human Evolution Stops"<br><br>死守专业户外人群，通过 REI 渠道 + PCT 渗透建立信任</p></div>
+  </div>
+</section>
+
+<!-- SLIDE 15 — Branding：中美双轨策略 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>Branding：中美市场双轨策略</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:1em; max-width:900px; margin:0.8em auto 0;">
+    <div style="background:var(--hs-light); border-radius:12px; padding:1em; text-align:left; border:1px solid #ccfbf1;">
+      <h3 style="font-size:1em; color:var(--hs-green-d); margin:0 0 0.5em;">🇨🇳 中国市场</h3>
+      <p style="font-size:0.82em; color:#555;"><strong>策略：情感牵引，潮流破圈</strong></p>
+      <p style="font-size:0.78em; color:#666; line-height:1.6;">
+        「机能复兴者」= 品牌基石，建立情感信任<br>
+        「潮流先锋者」= 破圈利器，驱动声量销量<br><br>
+        战役《重启人生》：寻找 5 位因伤病告别山野的普通人，用 Hypershell 完成一座山峰的攀登<br>
+        「山系创造营」：联名安踏/李宁，发起 #都市爬楼挑战#<br><br>
+        渠道：小红书/抖音种草 → 天猫/京东转化 → 核心商圈快闪体验
+      </p>
+    </div>
+    <div style="background:var(--hs-cream); border-radius:12px; padding:1em; text-align:left; border:1px solid #ccfbf1;">
+      <h3 style="font-size:1em; color:var(--hs-green-d); margin:0 0 0.5em;">🇺🇸 欧美市场</h3>
+      <p style="font-size:0.82em; color:#555;"><strong>策略：性能征服，生态锁定</strong></p>
+      <p style="font-size:0.78em; color:#666; line-height:1.6;">
+        「极限突破者」= 品牌灯塔，建立专业权威<br>
+        「创作捕手」= 生态支点，构建内容壁垒<br><br>
+        PCT 认证计划：赞助太平洋山脊步道穿越者，收集极端环境数据<br>
+        Creator Access Program：向顶级户外创作者寄送产品，换取深度评测<br><br>
+        渠道：专业户外媒体评测 → REI 上架 → 官网 DTC → 社交媒体扩散
+      </p>
+    </div>
+  </div>
+  <p style="margin-top:0.8em; font-size:0.75em; color:#aaa;">关键差异化：亚洲用"轻户外"概念分层渗透，欧美直击核心场景（PCT/AT 路线）</p>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  PART 4: 收尾（2 pages）
+  ═══════════════════════════════════════════ -->
+
+<!-- SLIDE 16 — 为什么是我 -->
+<section data-background-color="var(--hs-cream)">
+  <h2>为什么是我</h2>
+  <p style="color:#888; font-size:0.9em; max-width:650px; margin:0.3em auto 1em;">Hypershell 面临的挑战，我在 OPPO 已经解决过</p>
+  <div style="max-width:900px; margin:0 auto;">
+    <table class="compare-table">
+      <thead><tr><th>Hypershell 的挑战</th><th>我在 OPPO 的做法</th><th>说明了什么</th></tr></thead>
+      <tbody>
+        <tr><td>品类新，用户不知道自己需要</td><td>用"AI 长焦"场景化短视频，让功能可被瞬间感知</td><td>能把"没人知道"变成"大家想要"</td></tr>
+        <tr><td>专业圈层 → 大众市场</td><td>泰国/新加坡差异化策略，旗舰延伸到大众消费者</td><td>知道"破圈"的桥怎么搭</td></tr>
+        <tr><td>社媒声量从零到一</td><td>TikTok 曝光量增长 3 倍，官方互动突破 200 万</td><td>不是懂理论的人，是真做过的人</td></tr>
+        <tr><td>欧美市场文化适配</td><td>中东非市场"文化前筛"机制，适配零失误</td><td>跨文化品牌建设是已验证的能力</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SLIDE 17 — 联系我 -->
+<section data-background-color="var(--hs-dark-2)">
+  <h1 style="font-size:2em; color:var(--hs-green-l);">一起做点<br>经得住时间的事</h1>
+  <div class="end-tagline" style="color:var(--hs-green-l);">
+    新产品上市、品牌焕新、或者开拓新市场——聊聊你在做的事。
+  </div>
+  <div style="margin-top:2em; font-size:0.95em;">
+    <p style="margin:0.4em 0; color:#ccc;">📧 <a href="mailto:578632101@qq.com" style="color:var(--hs-green-l);">578632101@qq.com</a></p>
+    <p style="margin:0.4em 0; color:#ccc;">🔗 <a href="https://www.linkedin.com/in/qian-daniella-2a04a785/" target="_blank" style="color:var(--hs-green-l);">linkedin.com/in/qian-daniella</a></p>
+    <p style="margin:0.4em 0; color:#ccc;">🌐 <a href="https://daniella813.github.io/daniella-portfolio/" target="_blank" style="color:var(--hs-green-l);">daniella813.github.io/portfolio</a></p>
+  </div>
+  <p style="margin-top:2.5em; font-size:0.75em; color:#555;">© 2026 钱丹丹 Daniella Qian</p>
+</section>
+
+</div></div>
 
 <!-- reveal.js JS -->
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
 <script>
   Reveal.initialize({
-    hash: true,          // URL 会显示当前页码（如 #/2）
-    slideNumber: true,    // 右下角显示页码
-    transition: 'slide', // 切换动效：slide / fade / convex / concave / zoom
-    transitionSpeed: 'default', // default / fast / slow
+    hash: true,
+    slideNumber: true,
+    transition: 'slide',
+    transitionSpeed: 'default',
     backgroundTransition: 'fade',
     width: 1280,
     height: 720,
@@ -608,56 +402,61 @@
     minScale: 0.2,
     maxScale: 2.0,
   });
+
+  // ─── 市场覆盖地图（D3 世界地图简化版） ───
+  (function() {
+    var mapDiv = document.getElementById('market-map');
+    if (!mapDiv) return;
+    var w = mapDiv.clientWidth || 900, h = mapDiv.clientHeight || 340;
+
+    var svg = d3.select('#market-map').append('svg')
+      .attr('viewBox', '0 0 ' + w + ' ' + h)
+      .attr('preserveAspectRatio', 'xMidYMid meet');
+
+    // 简化的市场覆盖图 — 用圆圈和连线表示
+    var markets = [
+      {name:'中国', x:w*0.72, y:h*0.35, r:18, label:'China'},
+      {name:'泰国', x:w*0.68, y:h*0.5, r:10, label:'Thailand'},
+      {name:'新加坡', x:w*0.66, y:h*0.6, r:7, label:'Singapore'},
+      {name:'印尼', x:w*0.71, y:h*0.65, r:10, label:'Indonesia'},
+      {name:'马来西亚', x:w*0.66, y:h*0.56, r:8, label:'Malaysia'},
+      {name:'越南', x:w*0.69, y:h*0.48, r:8, label:'Vietnam'},
+      {name:'菲律宾', x:w*0.76, y:h*0.5, r:7, label:'Philippines'},
+      {name:'印度', x:w*0.6, y:h*0.42, r:10, label:'India'},
+      {name:'中东非', x:w*0.5, y:h*0.38, r:12, label:'MEA'},
+      {name:'欧洲', x:w*0.4, y:h*0.22, r:10, label:'Europe'}
+    ];
+
+    // 背景 — 简化大陆轮廓
+    svg.append('rect').attr('width',w).attr('height',h).attr('fill','#f0fdfa').attr('rx',12);
+
+    // 亚洲大陆简图
+    svg.append('ellipse').attr('cx',w*0.68).attr('cy',h*0.45).attr('rx',120).attr('ry',90).attr('fill','#e6f7f5').attr('stroke','#ccfbf1').attr('stroke-width',1);
+    // 欧洲
+    svg.append('ellipse').attr('cx',w*0.38).attr('cy',h*0.2).attr('rx',50).attr('ry',35).attr('fill','#e6f7f5').attr('stroke','#ccfbf1').attr('stroke-width',1);
+    // 非洲
+    svg.append('ellipse').attr('cx',w*0.5).attr('cy',h*0.6).attr('rx',45).attr('ry',60).attr('fill','#e6f7f5').attr('stroke','#ccfbf1').attr('stroke-width',1);
+
+    // 连线
+    var hub = {x:w*0.72, y:h*0.35};
+    markets.forEach(function(m) {
+      if (m.name === '中国') return;
+      svg.append('line')
+        .attr('x1',hub.x).attr('y1',hub.y).attr('x2',m.x).attr('y2',m.y)
+        .attr('stroke','#14b8a6').attr('stroke-width',1).attr('stroke-dasharray','4,3').attr('opacity',0.5);
+    });
+
+    // 市场圆点
+    markets.forEach(function(m) {
+      var g = svg.append('g').attr('transform','translate('+m.x+','+m.y+')');
+      g.append('circle').attr('r',m.r).attr('fill',m.name==='中国'?'#0d9488':'#14b8a6').attr('opacity',0.85).attr('stroke','#fff').attr('stroke-width',1.5);
+      g.append('text').text(m.label).attr('text-anchor','middle').attr('dy','0.35em').attr('fill','#fff').attr('font-size',m.r>12?'10px':'8px').attr('font-weight','600');
+    });
+
+    // 标题
+    svg.append('text').text('Market Coverage').attr('x',20).attr('y',25).attr('fill','#0d9488').attr('font-size','13px').attr('font-weight','700');
+  })();
 </script>
 
-<!-- ═══════════════════════════════════════════
-     教学注释：reveal.js 核心知识点
-     ═══════════════════════════════════════════
-
-  1. 基本结构：
-     <div class="reveal">
-       <div class="slides">
-         <section>第 1 页</section>
-         <section>第 2 页</section>
-       </div>
-     </div>
-
-  2. 纵向幻灯片（下钻）：
-     <section>
-       <section>主页面</section>
-       <section>向下钻的第 1 页</section>
-       <section>向下钻的第 2 页</section>
-     </section>
-     → 按 ↓ 键进入纵向页面
-
-  3. 常用参数（Reveal.initialize）：
-     - hash: true          → URL 显示页码，方便分享
-     - slideNumber: true   → 右下角显示"3 / 8"
-     - transition:         → 页面切换效果
-     - embedded: true      → 嵌网页里（非全屏）
-     - autoSlide: 5000     → 每 5 秒自动翻页
-
-  4. 背景设置：
-     - data-background-color="#f8f6f2"  → 纯色背景
-     - data-background-image="url"       → 图片背景
-     - data-background-video="url"       → 视频背景
-     - data-background-iframe="url"       → iframe 嵌入
-
-  5. 动画（Fragment）：
-     <p class="fragment">第 1 次按 → 出现</p>
-     <p class="fragment">第 2 次按 → 出现</p>
-     <p class="fragment fade-out">第 3 次按 → 消失</p>
-
-  6. 主题（theme）：
-     替换 <link> 的 href：
-     - dracula（本文件用的，暗色）
-     - black / white / league / beige / sky / night / serif / simple
-
-  7. 导出 PDF：
-     浏览器打开：file:///path/to/file.html?print-pdf
-     然后「打印 → 另存为 PDF」
-
-  ═══════════════════════════════════════════
--->
 </body>
 </html>
